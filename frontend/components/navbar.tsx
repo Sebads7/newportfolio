@@ -3,60 +3,65 @@
 import { useEffect, useState } from "react";
 import { CiMail } from "react-icons/ci";
 import { MdPhoneIphone } from "react-icons/md";
-import { FaLinkedin } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { NAV_LINKS } from "@/constants";
-
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { NAV_LINKS } from "../constants/index";
 import Link from "next/link";
+import { Typewriter } from "react-simple-typewriter";
 
-const NavBar = () => {
+interface NavBarProps {
+  loading: boolean;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ loading }) => {
   const [activeIndex, setActiveIndex] = useState<string | null>(null);
   const [isSticky, setIsSticky] = useState(false);
   const [currentPath, setCurrentPath] = useState<string>("");
 
-  ////////// Handle scroll event ////////////
-
-  const handleScroll = () => {
-    // Check scroll position
-    if (window.scrollY > 50) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
-    }
-  };
-
   useEffect(() => {
-    // Add scroll event listener
+    const sections = NAV_LINKS.map((link) => document.getElementById(link.id));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setCurrentPath(`/#${entry.target.id}`);
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    sections.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 50);
+    };
+
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup on component unmount
     return () => {
+      sections.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  ////////// End Handle scroll event ////////////
-
-  useEffect(() => {
-    setCurrentPath(window.location.pathname);
-  }, []);
-
   return (
     <>
-      <div className="flex items-center w-full  bg-gray-100 p-3 z-10 relative">
+      <div className="flex top-0 items-center w-full bg-gray-100 p-3 z-10 relative">
         <div className="flex justify-between w-full px-[10rem]">
-          <div className="flex items-center  gap-3">
+          <div className="flex items-center gap-3">
             <CiMail />
             <a className="pr-5" href="mailto:ds.sebastian@outlook.com">
               ds.sebastian@outlook.com
             </a>
-
             <MdPhoneIphone />
-            <a href="tel:+542634761074" className=" pointer-events-none">
+            <a href="tel:+542634761074" className="pointer-events-none">
               +54 (263) 476-1074
             </a>
           </div>
-
           <div className="flex items-center gap-3">
             <FaLinkedin className="fill-blue-600" />
             <a
@@ -68,7 +73,6 @@ const NavBar = () => {
             >
               LinkedIn
             </a>
-
             <FaGithub />
             <a
               href="https://github.com/Sebads7"
@@ -83,29 +87,42 @@ const NavBar = () => {
       </div>
 
       <div
-        className={`justify-center items-center flex z-10 w-full h-20  transition-all duration-150 ease-in bg-black ${
-          isSticky ? "top-0  fixed border-b-[1.5px] border-white " : ""
+        className={`justify-center items-center flex z-50 w-full h-20 transition-all duration-150 ease-in-out ${
+          loading ? "bg-black" : "bg-black/50"
+        } ${
+          isSticky
+            ? "top-0 delay-100 fixed border-b-[.03px] border-white !bg-black"
+            : ""
         }`}
       >
-        <div className="grid grid-cols-3 w-full px-16  ">
-          {/* MY NAME */}
-          <div className="flex items-center h-full pl-2   ">
-            <h2 className="text-2xl font-semibold text-white ">
-              Sebastian <span className="">Di Salvatore</span>
+        <div className="grid grid-cols-3 w-full px-16">
+          <div className="flex items-center h-full pl-2">
+            <h2 className="text-2xl font-semibold text-white">
+              <Typewriter
+                words={["SEBASTIAN DI SALVATORE", "FULL-STACK DEVELOPER"]}
+                loop={false}
+                cursor
+                cursorStyle="_"
+                typeSpeed={150}
+                deleteSpeed={150}
+                delaySpeed={1500}
+              />
             </h2>
           </div>
-
-          {/* NAVIGATION */}
-          <nav className="  flex justify-center items-center col-span-2 text-white  ">
-            <ul className="flex items-center gap-5 text-lg">
+          <nav className="flex justify-center items-center col-span-2 text-white">
+            <ul className="flex items-center gap-5 text-lg font-thin">
               {NAV_LINKS.map((link) => (
                 <li
                   key={link.key}
-                  className="relative w-full h-full   cursor-pointer "
+                  className="relative w-full h-full cursor-pointer"
                 >
                   <Link
                     href={link.to}
-                    className={`flex relative px-4 py-2 rounded-lg ${currentPath === link.to ? "text-blue-800 " : ""}`}
+                    className={`flex relative px-5 py-1 rounded-lg ${
+                      currentPath === link.to
+                        ? "border-[.1px] bg-blue-50 hover:scale-[1.05] transition-all ease-in-out text-black"
+                        : ""
+                    }`}
                     onClick={() => setCurrentPath(link.to)}
                     onMouseEnter={() => setActiveIndex(link.key)}
                     onMouseLeave={() => setActiveIndex(null)}
@@ -116,8 +133,8 @@ const NavBar = () => {
                         currentPath === link.to
                           ? "w-0 bg-transparent"
                           : activeIndex === link.key
-                            ? "w-3/4 bg-blue-400"
-                            : "w-0 bg-blue-400"
+                            ? "w-3/5 bg-blue-200"
+                            : "w-0 bg-blue-200"
                       }`}
                     ></div>
                   </Link>

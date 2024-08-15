@@ -10,8 +10,27 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Inter;
+}
+
+@keyframes progressAnimation {
+  0% {
+    stroke-dashoffset: 251.2;
+  }
+  100% {
+    stroke-dashoffset: calc(
+      251.2px - (251.2px * var(--skill-percentage)) / 100
+    );
+  }
+}
+
+.progress-circle {
+  animation: progressAnimation 2s ease-out;
 }
 
 :root {
