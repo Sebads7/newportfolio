@@ -15,7 +15,23 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ loading }) => {
   const [activeIndex, setActiveIndex] = useState<string | null>(null);
   const [isSticky, setIsSticky] = useState(false);
+
   const [currentPath, setCurrentPath] = useState<string>("");
+
+  const isStickyNav = () => {
+    if (window.scrollY > 60) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", isStickyNav);
+    return () => {
+      window.removeEventListener("scroll", isStickyNav);
+    };
+  }, []);
 
   useEffect(() => {
     const sections = NAV_LINKS.map((link) => document.getElementById(link.id));
@@ -34,24 +50,20 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
       if (section) observer.observe(section);
     });
 
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
     return () => {
       sections.forEach((section) => {
         if (section) observer.unobserve(section);
       });
-      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <>
-      <div className="flex top-0 items-center w-full bg-gray-100 p-3 z-10 relative">
-        <div className="flex justify-between w-full px-[10rem]">
+    <div className={`block w-full top-0 z-50 `}>
+      {/* TOP BAR */}
+      <div
+        className={` bg-gray-100 p-3  transition-all duration-100 ease-in-out ${isSticky ? "hidden" : ""}`}
+      >
+        <div className="flex justify-between w-full px-20">
           <div className="flex items-center gap-3">
             <CiMail />
             <a className="pr-5" href="mailto:ds.sebastian@outlook.com">
@@ -87,15 +99,13 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
       </div>
 
       <div
-        className={`justify-center items-center flex z-50 w-full h-20 transition-all duration-150 ease-in-out ${
+        className={`justify-center items-center flex w-full h-20 transition-all duration-100 ease-in-out delay-150 ${
           loading ? "bg-black" : "bg-black/50"
-        } ${
-          isSticky
-            ? "top-0 delay-100 fixed border-b-[.03px] border-white !bg-black"
-            : ""
+        } ${isSticky ? `border-b-[.03px] border-white !bg-black fixed top-0` : ""} 
         }`}
       >
         <div className="grid grid-cols-3 w-full px-16">
+          {/* NAME TYPEWRITER EFFECT */}
           <div className="flex items-center h-full pl-2">
             <h2 className="text-2xl font-semibold text-white">
               <Typewriter
@@ -144,7 +154,7 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
           </nav>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -29,6 +29,10 @@ body {
   }
 }
 
+.word {
+  @apply inline-block opacity-0;
+}
+
 .progress-circle {
   animation: progressAnimation 2s ease-out;
 }

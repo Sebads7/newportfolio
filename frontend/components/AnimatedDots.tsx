@@ -25,7 +25,7 @@ const AnimatedDots: React.FC<AnimatedDotsProps> = ({ onLoad }) => {
 
     handleResize(); // Set initial size
 
-    const dots = [...Array(20)].map(() => ({
+    const dots = [...Array(30)].map(() => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 2 + 2,
