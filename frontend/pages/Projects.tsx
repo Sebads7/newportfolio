@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PROJECTS_DATA } from "../constants/index";
 
 const Projects = () => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
     <section

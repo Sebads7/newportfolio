@@ -66,6 +66,7 @@ export const Card = ({
     <motion.div
       className="transition-all duration-300 ease-in-out "
       style={{
+        rotateX: rotate,
         rotateY: rotate,
         scale,
       }}

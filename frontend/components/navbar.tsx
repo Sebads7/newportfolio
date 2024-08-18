@@ -101,9 +101,12 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
       <div
         className={`justify-center items-center flex w-full h-20 transition-all duration-100 ease-in-out delay-150 ${
           loading ? "bg-black" : "bg-black/50"
-        } ${isSticky ? `border-b-[.03px] border-white !bg-black fixed top-0` : ""} 
+        } ${isSticky ? ` !bg-black fixed top-0` : ""} 
         }`}
       >
+        <div
+          className={`absolute translate-y-10 left-1/2 transform -translate-x-1/2 h-[1px] rounded-sm transition-all z-20 duration-300 delay-75 ease-in-out  ${isSticky ? "w-full bg-blue-200" : "w-0 bg-blue-200"}`}
+        ></div>
         <div className="grid grid-cols-3 w-full px-16">
           {/* NAME TYPEWRITER EFFECT */}
           <div className="flex items-center h-full pl-2">

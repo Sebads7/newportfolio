@@ -6,7 +6,7 @@ export const NAV_LINKS = [
   { to: "/#resume", key: "resume ", label: "Resume ", id: "resume" },
   { to: "/#contact", key: "contact", label: "Contact", id: "contact" },
 ];
-
+// PROJECTS PAGE DATA
 export const PROJECTS_DATA = [
   {
     title: "Dynamic Construction Company Website",
@@ -56,17 +56,82 @@ export const skills = [
     icon: "javascript",
     color: "#F6FB7A",
   }, // JavaScript color
-  { skillName: "React", percentage: 75, icon: "react", color: "#61DAFB" }, // React color
+  { skillName: "React", percentage: 80, icon: "react", color: "#61DAFB" }, // React color
   {
     skillName: "TypeScript",
-    percentage: 70,
+    percentage: 80,
     icon: "typescript",
     color: "#3178C6",
   }, // TypeScript color
-  { skillName: "Node.js", percentage: 70, icon: "node.js", color: "#339933" }, // Node.js color
+  { skillName: "Node.js", percentage: 80, icon: "node.js", color: "#339933" }, // Node.js color
   { skillName: "MongoDB", percentage: 70, icon: "mongodb", color: "#47A248" }, // MongoDB color
   { skillName: "Express", percentage: 70, icon: "express", color: "#808080" }, // Express color
   { skillName: "SQL", percentage: 70, icon: "sql", color: "#336791" }, // SQL color
-  { skillName: "Python", percentage: 60, icon: "python", color: "#3776AB" }, // Python color
-  { skillName: "Java", percentage: 60, icon: "java", color: "#007396" }, // Java color
+  { skillName: "Python", percentage: 50, icon: "python", color: "#3776AB" }, // Python color
+  { skillName: "Java", percentage: 50, icon: "java", color: "#007396" }, // Java color
 ];
+
+export const RESUME_DATA = {
+  experience: [
+    {
+      title: "Freelance Full-Stack Developer",
+      dates: "August 2023 - Present",
+      responsibilities: [
+        "Engaged in freelance projects to pursue a career transition into programming.",
+      ],
+    },
+    {
+      title: "Business Owner- PaintSmart ",
+      company: "Home Remodeling Company in",
+      location: "Atlanta, GA",
+      dates: "2015 - 2018",
+      responsibilities: [
+        "Prepared precise cost estimates for construction projects, ensuring adherence to budgets.",
+        "Managed company website, marketing efforts, and maintained client relationships",
+        "Performed carpentry, painting, kitchen and bathroom remodeling, and other construction tasks",
+      ],
+    },
+    {
+      title: "Front-Desk",
+      company: "Medical Office",
+      location: "Charlotte, NC, USA",
+      dates: "2011 - 2012",
+      responsibilities: [
+        "Provided technical support for office equipment and resolved technical issues.",
+        "Maintained accurate and organized customer records.",
+      ],
+    },
+  ],
+  courses_certifications: [
+    {
+      title: "Front-End Engineer ",
+      institution: "Codecademy",
+      location: "Online",
+      dates: "2023",
+    },
+    {
+      title: "Full-Stack Web Development",
+      institution: "Udemy",
+      location: "Online",
+      dates: "2022",
+    },
+    {
+      title: "Advanced CSS and Sass",
+      institution: "Udemy",
+      location: "Online",
+      dates: "2023",
+    },
+  ],
+  languages: [
+    {
+      name: "Spanish",
+      level: "(Native)",
+      percentage: 100,
+    },
+    {
+      name: "English",
+      level: "(Bilingual C2)",
+      percentage: 90,
+    },
+  ],
+};
