@@ -20,7 +20,7 @@ const Hero = () => {
         className={`flex flex-col justify-center items-center h-[60rem]  w-full  `}
       >
         {!loading && (
-          <div className="flex flex-col justify-center items-center h-full">
+          <div className="flex flex-col justify-center items-center -translate-y-28  ">
             <div className="mb-14">
               <h1 className="text-7xl font-bold  pb-8 text-white word animate-blur-in animate-delay-[.5s]  ">
                 Hi,

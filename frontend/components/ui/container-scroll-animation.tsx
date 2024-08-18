@@ -3,8 +3,10 @@ import React, { useRef } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
 export const ContainerScroll = ({
+  title,
   children,
 }: {
+  title: React.ReactNode;
   children: React.ReactNode;
 }) => {
   const containerRef = useRef<any>(null);
@@ -25,43 +27,28 @@ export const ContainerScroll = ({
   }, []);
 
   const scaleDimensions = () => {
-    return isMobile ? [0.7, 0.9] : [1.05, 1];
+    return isMobile ? [0.7, 0.9] : [0.7, 0.8];
   };
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
+  const rotate = useTransform(scrollYProgress, [0, 1], [10, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.9], scaleDimensions());
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
-    <div
-      className="h-[80rem] flex items-center justify-center relative   "
-      ref={containerRef}
-    >
+    <div className="h-[60rem]   relative" ref={containerRef}>
       <div
-        className=" w-full relative  "
+        className="sticky top-0 transition-all  duration-200 ease-in-out  "
         style={{
-          perspective: "900px",
+          perspective: "1200px",
         }}
       >
-        <h2 className="text-5xl font-bold text-center   text-white">
-          My Skills
-        </h2>
+        <div className="pt-36"> {title}</div>
 
         <Card rotate={rotate} translate={translate} scale={scale}>
-          <div className="translate-y-28"> {children}</div>
+          <div className="px-32"> {children}</div>
         </Card>
       </div>
     </div>
-  );
-};
-
-export const Header = ({ translate }: any) => {
-  return (
-    <motion.div
-      style={{
-        translateY: translate,
-      }}
-    ></motion.div>
   );
 };
 
@@ -77,12 +64,13 @@ export const Card = ({
 }) => {
   return (
     <motion.div
+      className="transition-all duration-300 ease-in-out "
       style={{
-        rotateX: rotate,
+        rotateY: rotate,
         scale,
       }}
     >
-      <div className="pt-28">{children}</div>
+      {children}
     </motion.div>
   );
 };

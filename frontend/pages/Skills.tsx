@@ -1,5 +1,9 @@
+"use client";
+
 import React from "react";
 import { skills } from "@/constants";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+
 import {
   FaHtml5,
   FaCss3Alt,
@@ -17,7 +21,6 @@ import {
   SiExpress,
   SiPython,
 } from "react-icons/si";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 // Map skill icon strings to actual React icon components
 const iconMap: { [key: string]: React.ElementType } = {
@@ -38,12 +41,18 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 const Skills = () => {
   return (
-    <section className="  bg-black/50 w-full pb-20  " id="skills">
+    <div id="skills">
       {/* TITLE */}
-      <ContainerScroll>
-        <div className="flex justify-center items-center bg-gray-100/90 rounded-tl-[10rem] rounded-br-[10rem]  border-2 border-spacing-2 border-white  py-5 mx-32 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] ">
-          {/* SKILLS GRID */}
-          <div className="  grid grid-cols-5 gap-x-8 ">
+      <ContainerScroll
+        title={
+          <h2 className="text-5xl font-bold text-center   text-white">
+            My Skills
+          </h2>
+        }
+      >
+        {/* SKILLS GRID */}
+        <div className="flex  justify-center items-center  bg-gray-100/90 rounded-tl-[10rem] rounded-br-[10rem]  border-2 border-spacing-2 border-white  py-5 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] ">
+          <div className="  grid grid-cols-5 gap-x-14 ">
             {skills.map((skill) => {
               const IconComponent = iconMap[skill.icon]; // Get the icon component from the iconMap
               return (
@@ -104,7 +113,7 @@ const Skills = () => {
           </div>
         </div>
       </ContainerScroll>
-    </section>
+    </div>
   );
 };
 
