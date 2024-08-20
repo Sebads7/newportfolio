@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Contact from "@/pages/Contact";
 import Hero from "@/pages/Hero";
 import Projects from "@/pages/Projects";
@@ -12,6 +13,7 @@ export default function Home() {
       <Skills />
       <Resume />
       <Contact />
+      <Footer />
     </>
   );
 }

@@ -45,14 +45,32 @@ const Skills = () => {
       {/* TITLE */}
       <ContainerScroll
         title={
-          <h2 className="text-5xl font-bold text-center   text-white">
-            My Skills
-          </h2>
+          <div className="flex justify-center items-center flex-col">
+            <h2 className="text-5xl font-bold text-center   text-white">
+              My Skills
+            </h2>
+
+            <h3 className=" text-2xl font-bold tracking-tight text-center bg-gray-200 py-2 px-4 translate-x-10 mt-3  shadow-[5px_5px_0px_0px_rgba(8,112,184)]">
+              Technologies
+            </h3>
+          </div>
         }
       >
         {/* SKILLS GRID */}
-        <div className="flex  justify-center items-center  bg-gray-100/90 rounded-tl-[10rem] rounded-br-[10rem]  border-2 border-spacing-2 border-white  py-5 shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] ">
-          <div className="  grid grid-cols-5 gap-x-14 ">
+        <div
+          className="flex
+          justify-center 
+          items-center  
+          bg-gray-100/90 
+          rounded-tl-[10rem] 
+          rounded-br-[10rem]  
+          border-2 
+          border-spacing-2 
+          border-white  
+          py-5 
+          shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] "
+        >
+          <div className="  grid xs:grid-cols-3  sm:grid-cols-4  lg:grid-cols-5 lg:gap-x-14  sm:w-full lg:w-auto ">
             {skills.map((skill) => {
               const IconComponent = iconMap[skill.icon]; // Get the icon component from the iconMap
               return (

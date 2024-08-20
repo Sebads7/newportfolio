@@ -72,6 +72,20 @@ export const skills = [
 ];
 
 export const RESUME_DATA = {
+  education: [
+    {
+      degree: "Associate of Science in Computer Science",
+      institution: "University of The People (online)",
+      location: "Pasadena, CA, USA",
+      dates: "2022-2024",
+    },
+    {
+      degree: "GED- High School Diploma",
+      institution: "Gwinnett Technical College",
+      location: "Lawrenceville, GA, USA",
+      dates: "2016-2018",
+    },
+  ],
   experience: [
     {
       title: "Freelance Full-Stack Developer",
@@ -91,16 +105,16 @@ export const RESUME_DATA = {
         "Performed carpentry, painting, kitchen and bathroom remodeling, and other construction tasks",
       ],
     },
-    {
-      title: "Front-Desk",
-      company: "Medical Office",
-      location: "Charlotte, NC, USA",
-      dates: "2011 - 2012",
-      responsibilities: [
-        "Provided technical support for office equipment and resolved technical issues.",
-        "Maintained accurate and organized customer records.",
-      ],
-    },
+    // {
+    //   title: "Front-Desk",
+    //   company: "Medical Office",
+    //   location: "Charlotte, NC, USA",
+    //   dates: "2011 - 2012",
+    //   responsibilities: [
+    //     "Provided technical support for office equipment and resolved technical issues.",
+    //     "Maintained accurate and organized customer records.",
+    //   ],
+    // },
   ],
   courses_certifications: [
     {

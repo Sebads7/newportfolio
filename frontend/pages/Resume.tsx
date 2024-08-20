@@ -14,42 +14,39 @@ const Resume = () => {
 
       <h1 className="text-5xl text-center font-bold mb-10 ">Resume</h1>
 
-      <div className="container grid grid-cols-2 place-items-center  mx-auto p-6 ">
+      <div className="container grid grid-cols-2 place-items-center  mx-auto p-6 bg-slate-50/60 shadow-lg ">
         {/* LEFT SECTION */}
-        <div className="w-4/5">
+        <div className="w-4/5 ">
           {/* Education Section */}
-          <div className="   p-6 border-t border-gray-200 h-[26.3rem]">
+          <div className="   p-6 h-[26.2rem]">
             <h2 className="text-2xl font-bold mb-7 text-center ">Education</h2>
-
-            {/* EDUCATION ONE */}
-            <div className="mb-6">
-              <h3 className="text-xl font-bold">
-                Associate of Science in Computer Science
-              </h3>
-              <p className="text-lg">University of The People (online)</p>
-              <p className="text-lg">Pasadena, CA, USA</p>
-              <p className="text-gray-600">2022-2024</p>
-            </div>
-            {/* EDUCATION TWO */}
-            <div>
-              <h3 className="text-xl font-bold">GED- High School Diploma</h3>
-              <p className="text-lg">Gwinnett Technical College</p>
-              <p className="text-lg">Lawrenceville, GA, USA</p>
-              <p className="text-gray-600">2016-2018</p>
-            </div>
+            {RESUME_DATA.education.map((edu, index) => (
+              <div
+                key={index}
+                className="mb-4 flex flex-col text-center bg-[#F1F1F1] p-3 rounded-lg"
+              >
+                <h3 className="text-xl font-bold">{edu.degree}</h3>
+                <p className="text-lg">{edu.institution}</p>
+                <p className="text-lg">{edu.location}</p>
+                <p className="text-gray-600">{edu.dates}</p>
+              </div>
+            ))}
           </div>
-
+          <hr className="my-5 py-[2px] h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
           {/* Experience Section */}
-          <div className="p-6 border-t border-gray-200  ">
+          <div className="p-6   ">
             <h2 className="text-2xl font-bold mb-7 text-center ">Experience</h2>
             <div>
               {RESUME_DATA.experience.map((exp, index) => (
-                <div key={index} className="mb-6 text-justify pr-10">
-                  <h3 className="text-xl font-bold ">{exp.title}</h3>
-                  <p className="text-lg">
+                <div
+                  key={index}
+                  className=" text-justify pr-10 mb-4 flex flex-col bg-[#F1F1F1] p-3 rounded-lg"
+                >
+                  <h3 className="text-xl font-bold text-center">{exp.title}</h3>
+                  <p className="text-lg text-center">
                     {exp.company} {exp.location}
                   </p>
-                  <p className="text-gray-600">{exp.dates}</p>
+                  <p className="text-gray-600 text-center">{exp.dates}</p>
                   <ul className="list-disc pl-5 mt-2">
                     {exp.responsibilities.map((item, idx) => (
                       <li key={idx} className="mb-1">
@@ -66,13 +63,16 @@ const Resume = () => {
         {/* RIGHT SECTION */}
         <div className="w-4/5  h-full">
           {/* Courses & Certificate Section */}
-          <div className="p-6 border-t border-gray-200">
+          <div className="p-6 ">
             <h2 className="text-2xl font-bold mb-7 text-center ">
               Courses & Certificates
             </h2>
             <div>
               {RESUME_DATA.courses_certifications.map((cert, index) => (
-                <div key={index} className="mb-6">
+                <div
+                  key={index}
+                  className="mb-4 text-center flex flex-col bg-[#F1F1F1] p-3 rounded-lg "
+                >
                   <h3 className="text-xl font-bold">{cert.title}</h3>
                   <p className="text-lg">
                     {cert.institution} — {cert.location}
@@ -83,12 +83,16 @@ const Resume = () => {
             </div>
           </div>
           {/* Language Section */}
-          <div className="flex  flex-col  justify-center  items-center p-6 border-t border-gray-200">
+          <hr className="my-5 py-[2px] h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
+          <div className="flex  flex-col  justify-center  items-center p-6 ">
             <h2 className="text-2xl font-bold mb-3 text-center ">Languages</h2>
-            <div className="w-full">
+            <div className="w-full pt-10">
               {RESUME_DATA.languages.map((lang, index) => (
-                <div key={index} className="flex flex-col  gap-3 pr-16 ">
-                  <p className=" text-xl font-semibold pt-10">
+                <div
+                  key={index}
+                  className="flex flex-col   gap-3 pr-16 bg-[#F1F1F1] p-5 rounded-lg mt-3"
+                >
+                  <p className=" text-lg font-semibold ">
                     {lang.name} <span>{lang.level}</span>
                   </p>
                   <div className="w-full bg-gray-200 rounded-full h-4">

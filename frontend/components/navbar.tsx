@@ -99,7 +99,7 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
       </div>
 
       <div
-        className={`justify-center items-center flex w-full h-20 transition-all duration-100 ease-in-out delay-150 ${
+        className={`justify-center items-center flex w-full h-20 transition-all duration-100 ease-in-out  ${
           loading ? "bg-black" : "bg-black/50"
         } ${isSticky ? ` !bg-black fixed top-0` : ""} 
         }`}
