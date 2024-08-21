@@ -109,7 +109,7 @@ const ContactForm = () => {
     <div className=" w-full ">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8   ">
-          <div className="grid grid-cols-2 mobile:flex mobile:flex-col pb-3 gap-5 px-10 m-0 w-full  ">
+          <div className="lg:grid lg:grid-cols-2 xs:flex xs:flex-col  pb-3 gap-5 xs:px-5 md:px-10 m-0 w-full xs:text-sm lg:text-base  ">
             <FormField
               control={form.control}
               name="fullname"
@@ -117,9 +117,9 @@ const ContactForm = () => {
                 <FormItem>
                   <FormControl>
                     <Input
-                      placeholder="Name "
+                      placeholder="Name"
                       {...field}
-                      className="mobile:text-xs "
+                      className="xs:text-sm lg:text-base "
                     />
                   </FormControl>
                   <FormMessage />
@@ -184,7 +184,7 @@ const ContactForm = () => {
                   <FormControl>
                     <Textarea
                       placeholder="Please, enter your message"
-                      className="h-[200px] mobile:text-xs"
+                      className="xs:h-[9rem] md:h-[12.5rem] mobile:text-xs"
                       {...field}
                       value={field.value as string} // explicitly set the type of the value property to string
                     />
@@ -197,7 +197,7 @@ const ContactForm = () => {
 
             <Button
               type="submit"
-              className="h-[50px] col-span-2 relative "
+              className="h-12 col-span-2 relative xs:text-sm lg:text-base "
               disabled={submitting}
             >
               {submitting && (

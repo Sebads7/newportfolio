@@ -40,6 +40,7 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setCurrentPath(`/#${entry.target.id}`);
+            console.log(entry.target.id);
           }
         });
       },
@@ -63,54 +64,67 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
       <div
         className={` bg-gray-100 p-3  transition-all duration-100 ease-in-out ${isSticky ? "hidden" : ""}`}
       >
-        <div className="flex justify-between w-full px-20">
-          <div className="flex items-center gap-3">
-            <CiMail />
-            <a className="pr-5" href="mailto:ds.sebastian@outlook.com">
-              ds.sebastian@outlook.com
-            </a>
-            <MdPhoneIphone />
-            <a href="tel:+542634761074" className="pointer-events-none">
-              +54 (263) 476-1074
-            </a>
+        <div className="flex xs:justify-evenly lg:justify-between  w-full   lg:px-20">
+          <div className="flex xs:flex-col lg:flex-row items-start gap-3">
+            {/* EMAIL */}
+            <div className="flex justify-center items-center gap-1">
+              <CiMail />
+              <a className="pr-5" href="mailto:ds.sebastian@outlook.com">
+                ds.sebastian@outlook.com
+              </a>
+            </div>
+            {/* PHONE */}
+            <div className="flex justify-center items-center gap-1">
+              <MdPhoneIphone />
+              <a href="tel:+542634761074" className="pointer-events-none">
+                +54 (263) 476-1074
+              </a>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            <FaLinkedin className="fill-blue-600" />
-            <a
-              className="pr-5"
-              href="https://www.linkedin.com/in/sebastian-joel-di-salvatore-a6565175/"
-              target="_blank"
-              rel="noopener"
-              aria-label="LinkedIn profile"
-            >
-              LinkedIn
-            </a>
-            <FaGithub />
-            <a
-              href="https://github.com/Sebads7"
-              target="_blank"
-              rel="noopener"
-              aria-label="Github profile"
-            >
-              GitHub
-            </a>
+          {/* RIGHT SIDE */}
+          <div className="flex xs:flex-col lg:flex-row items-start gap-3">
+            {/* LINKEDIN */}
+            <div className="flex justify-center items-center gap-1">
+              <FaLinkedin className="fill-blue-600" />
+              <a
+                className="lg:pr-5"
+                href="https://www.linkedin.com/in/sebastian-joel-di-salvatore-a6565175/"
+                target="_blank"
+                rel="noopener"
+                aria-label="LinkedIn profile"
+              >
+                LinkedIn
+              </a>
+            </div>
+            {/* GITHUB */}
+            <div className="flex justify-center items-center gap-1">
+              <FaGithub />
+              <a
+                href="https://github.com/Sebads7"
+                target="_blank"
+                rel="noopener"
+                aria-label="Github profile"
+              >
+                GitHub
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <div
-        className={`justify-center items-center flex w-full h-20 transition-all duration-100 ease-in-out  ${
+        className={`justify-center items-center flex  w-full h-20 transition-all duration-100 ease-in-out  ${
           loading ? "bg-black" : "bg-black/50"
         } ${isSticky ? ` !bg-black fixed top-0` : ""} 
         }`}
       >
         <div
-          className={`absolute translate-y-10 left-1/2 transform -translate-x-1/2 h-[1px] rounded-sm transition-all z-20 duration-300 delay-75 ease-in-out  ${isSticky ? "w-full bg-blue-200" : "w-0 bg-blue-200"}`}
+          className={`absolute  translate-y-10 left-1/2 transform -translate-x-1/2 h-[1px] rounded-sm transition-all z-20 duration-300 delay-75 ease-in-out  ${isSticky ? "w-full bg-blue-200" : "w-0 bg-blue-200"}`}
         ></div>
-        <div className="grid grid-cols-3 w-full px-16">
+        <div className="lg:grid lg:grid-cols-3 md:flex md:flex-col w-full md:px-16">
           {/* NAME TYPEWRITER EFFECT */}
-          <div className="flex items-center h-full pl-2">
-            <h2 className="text-2xl font-semibold text-white">
+          <div className="flex items-center justify-center h-full  lg:pl-2">
+            <h2 className="xs:text-lg lg:text-2xl font-semibold text-white">
               <Typewriter
                 words={["SEBASTIAN DI SALVATORE", "FULL-STACK DEVELOPER"]}
                 loop={false}
@@ -122,8 +136,8 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
               />
             </h2>
           </div>
-          <nav className="flex justify-center items-center col-span-2 text-white">
-            <ul className="flex items-center gap-5 text-lg font-thin">
+          <nav className="flex justify-center items-center col-span-2 text-white ">
+            <ul className="flex items-center md:gap-5 xs:text-base md:text-lg font-thin">
               {NAV_LINKS.map((link) => (
                 <li
                   key={link.key}
@@ -131,7 +145,7 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
                 >
                   <Link
                     href={link.to}
-                    className={`flex relative px-5 py-1 rounded-lg ${
+                    className={`flex relative xs:px-2 md:px-5 xs:py-[2px] md:py-1 rounded-lg ${
                       currentPath === link.to
                         ? "border-[.1px] bg-blue-50 hover:scale-[1.05] transition-all ease-in-out text-black"
                         : ""
@@ -142,7 +156,7 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
                   >
                     {link.label}
                     <div
-                      className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 h-[3px] rounded-sm transition-all duration-300 delay-75 ease-in-out ${
+                      className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 h-[3px] rounded-sm transition-all duration-300 delay-75 ease-in-out md:hidden lg:block ${
                         currentPath === link.to
                           ? "w-0 bg-transparent"
                           : activeIndex === link.key

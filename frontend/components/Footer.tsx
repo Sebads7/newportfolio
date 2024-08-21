@@ -8,7 +8,7 @@ import { MdEmail } from "react-icons/md";
 const Footer: React.FC = () => {
   return (
     <footer className="bg-white/95 text-black py-6">
-      <div className="container mx-auto flex justify-evenly">
+      <div className="container w-full mx-auto flex xs:flex-col lg:flex-row xs:justify-center items-center lg:justify-evenly">
         <div className="flex  flex-col">
           <div className="flex items-center mb-1 ">
             <MdEmail className="" size={15} />
@@ -16,13 +16,13 @@ const Footer: React.FC = () => {
           </div>
 
           {/* PHONE */}
-          <div className="flex items-center">
+          <div className="flex items-center xs:justify-center ">
             <IoIosPhonePortrait className="" size={15} />
             <p className=" ">+54 (234) 761074</p>
           </div>
         </div>
         {/* LINKS */}
-        <div className="mb-4 flex p-3 mt-2 gap-4 bg-gray-200 transition-all delay-100 duration-150 ease-in-out hover:-translate-y-2  hover:scale-[1.02] shadow-[5px_5px_rgba(8,_112,_184,_0.4),_10px_10px_rgba(8,_112,_184,_0.3),_15px_25px_rgba(0,_98,_90,_0.05)] ">
+        <div className="mb-4 flex p-3 mt-2 gap-4 bg-gray-200 transition-all delay-100 duration-150 ease-in-out hover:-translate-y-2  hover:scale-[1.02] shadow-footer ">
           {/* LINKEDIN  */}
           <div className="flex justify-center items-center ">
             <FaLinkedin className="fill-blue-600" />
@@ -59,11 +59,12 @@ const Footer: React.FC = () => {
             </a>
           </div>
         </div>
-
-        <p className="text-gray-800  flex flex-col items-center justify-center ">
-          &copy; {new Date().getFullYear()} Design and Developed by
-          <span>Sebastian Di Salvatore. All Rights Reserved.</span>
-        </p>
+        <div>
+          <p className="text-gray-800  flex flex-col text-center  ">
+            &copy; {new Date().getFullYear()} Designed and Developed by
+            <span>Sebastian Di Salvatore. All Rights Reserved.</span>
+          </p>
+        </div>
       </div>
     </footer>
   );

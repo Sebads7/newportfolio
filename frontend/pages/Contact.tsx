@@ -5,64 +5,65 @@ import { IoIosPhonePortrait } from "react-icons/io";
 
 const Contact = () => {
   return (
-    <section
-      className="pt-24 pb-36 flex flex-col  items-center w-full h-full  bg-black/50 text-white "
-      id="contact"
-    >
-      <div className="mt-10 container mx-auto p-6 w-full h-[50rem]  bg-white/90 shadow-[20px_20px_20px_0px_rgba(8,112,184)]">
-        <h1 className=" text-black text-center -tracking-tight  text-5xl  font-bold mt-10">
+    <section className="contact-section  " id="nav-contact">
+      <div className="contact-container ">
+        <h1 className=" text-black  text-center -tracking-tight xs:text-2xl md:text-4xl lg:text-5xl  font-bold mt-10">
           Contact
         </h1>
-        <div className="grid grid-cols-2 h-full">
-          <section className="flex w-full h-full   ">
-            <div className="w-full h-full pt-44 ">
-              <h2 className="text-center text-black   scroll-m-20 border-b pb-7 text-2xl font-light tracking-tight first:mt-0">
+        <div className="grid sx:grid-cols-1 lg:grid-cols-2 h-full  w-full">
+          {/* LEFT SIDE */}
+          <section className="flex w-full h-full  text-black xs:pt-5 md:pt-10">
+            <div className="w-full  h-full lg:pt-44 ">
+              <h2 className="text-center xs:pb-4 lg:pb-7 xs:text-base md:text-lg lg:text-2xl font-light tracking-tight">
                 You can reach me directly at:
               </h2>
-              <div className="w-full flex flex-col justify-center gap-10  ">
-                {/* EMAIL */}
-                <div className="flex flex-col justify-center items-center text-black">
-                  <div className="flex">
-                    <MdEmail className="" size={35} />
-                    <p className="scroll-m-20 border-b  pb-2 text-3xl font-semibold tracking-tight ">
-                      Email
+              <div className="xs:bg-slate-100 mx-auto py-4 xs:w-[240px] md:w-[350px]">
+                <div className="w-full flex flex-col justify-center xs:gap-5 lg:gap-10  ">
+                  {/* EMAIL */}
+                  <div className="flex flex-col  justify-center items-center text-black ">
+                    <div className="flex  ">
+                      <MdEmail className="contact-icon  " />
+                      <p className="contact-icon-desc">Email</p>
+                    </div>
+                    <p className="contact-icon-text ">
+                      disalvatore.sebastian@gmail.com
                     </p>
                   </div>
-                  <p>disalvatore.sebastian@gmail.com</p>
-                </div>
-                {/* PHONE NUMBER */}
-                <div className="flex flex-col justify-center items-center text-black">
-                  <div className="flex">
-                    <IoIosPhonePortrait className="" size={35} />
-                    <p className="scroll-m-20 border-b  pb-2 text-3xl font-semibold tracking-tight ">
-                      Phone
-                    </p>
+                  {/* PHONE NUMBER */}
+                  <div className="flex flex-col justify-center items-center text-black">
+                    <div className="flex">
+                      <IoIosPhonePortrait className="contact-icon" />
+                      <p className="contact-icon-desc">Phone</p>
+                    </div>
+                    <p className="contact-icon-text">+54 (263) 476-1074</p>
                   </div>
-                  <p>+54 (263) 476-1074</p>
                 </div>
               </div>
+
+              <hr className="contact-hr" />
             </div>
 
             {/* VERTICAL LINE */}
-            <div className="flex justify-end ">
+            <div className="flex justify-end transform xs:hidden lg:flex">
               <div className=" w-[2rem] py-20">
-                <div className="flex items-center h-[35rem]  w-[2px] self-stretch bg-gradient-to-tr from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400"></div>
+                <div className="contact-vertical-line"></div>
               </div>
             </div>
+
             {/* END VERTICAL LINE */}
           </section>
 
           {/* RIGHT SIDE */}
-          <section className="w-full h-full  pt-20 text-black ">
+          <section className="w-full h-full xs:pt-3 md:pt-5  lg:pt-20 text-black ">
             <header className="w-full  justify-center items-center flex flex-col pb-10">
-              <h2 className="font-bold tracking-tight lg:text-4xl mb-2">
+              <h2 className="font-bold tracking-tight xs:text-xl md:text-2xl lg:text-4xl mb-2">
                 Get in Touch
               </h2>
-              <p className=" border-2 border-b  text-2xl font-light tracking-tight">
+              <p className="text-center xs:px-3 xs:text-sm md:text-lg  lg:text-xl font-light tracking-tight">
                 I’m here to help with your project or answer any questions.
               </p>
             </header>
-            <div className=" px-10  ">
+            <div className=" lg:px-10  ">
               <ContactForm />
             </div>
           </section>

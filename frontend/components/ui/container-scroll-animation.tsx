@@ -35,7 +35,7 @@ export const ContainerScroll = ({
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
-    <div className="lg:h-[60rem] md:h-[70rem]    relative" ref={containerRef}>
+    <div className="md:h-[70rem]    relative" ref={containerRef}>
       <div
         className="sticky top-0 transition-all  duration-200 ease-in-out  "
         style={{

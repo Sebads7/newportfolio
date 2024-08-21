@@ -7,46 +7,48 @@ const Resume = () => {
   const resumePDF = "/Resume-SebastianDS.pdf";
   return (
     <section
-      className=" py-24  w-full h-full  dark:bg-black bg-white dark:bg-dot-white/[0.2] bg-dot-black/[0.2] "
-      id="resume"
+      className=" py-24  w-full xs:h-[125rem] lg:h-[85rem]  !dark:bg-black !bg-white !dark:bg-dot-white/[0.2] !bg-dot-black/[0.2] z-10"
+      id="nav-resume"
     >
-      <div className=" pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      {/* <div className=" pointer-events-none inset-0 flex items-center justify-center dark:bg-black !bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] z-10"></div> */}
 
-      <h1 className="text-5xl text-center font-bold mb-10 ">Resume</h1>
+      <h1 className="xs:text-3xl md:text-4xl lg:text-5xl text-center font-bold mb-10 ">
+        Resume
+      </h1>
 
-      <div className="container grid grid-cols-2 place-items-center  mx-auto p-6 bg-slate-50/60 shadow-lg ">
+      <div className="container grid lg:grid-cols-2 place-items-center xs:max-w-full   lg:mx-auto p-6 bg-slate-50/60 shadow-lg ">
         {/* LEFT SECTION */}
-        <div className="w-4/5 ">
+        <div className="lg:w-4/5 xs:w-full ">
           {/* Education Section */}
-          <div className="   p-6 h-[26.2rem]">
-            <h2 className="text-2xl font-bold mb-7 text-center ">Education</h2>
+          <div className="   lg:p-6   md:h-[26.2rem]">
+            <h2 className="resume-edu ">Education</h2>
             {RESUME_DATA.education.map((edu, index) => (
               <div
                 key={index}
                 className="mb-4 flex flex-col text-center bg-[#F1F1F1] p-3 rounded-lg"
               >
-                <h3 className="text-xl font-bold">{edu.degree}</h3>
-                <p className="text-lg">{edu.institution}</p>
-                <p className="text-lg">{edu.location}</p>
-                <p className="text-gray-600">{edu.dates}</p>
+                <h3 className="resume-deg">{edu.degree}</h3>
+                <p className="lg:text-lg">{edu.institution}</p>
+                <p className="lg:text-lg">{edu.location}</p>
+                <p className="resume-date">{edu.dates}</p>
               </div>
             ))}
           </div>
-          <hr className="my-5 py-[2px] h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
+          <hr className="resume-hr" />
           {/* Experience Section */}
-          <div className="p-6   ">
-            <h2 className="text-2xl font-bold mb-7 text-center ">Experience</h2>
+          <div className="md:p-6   ">
+            <h2 className="resume-edu ">Experience</h2>
             <div>
               {RESUME_DATA.experience.map((exp, index) => (
                 <div
                   key={index}
-                  className=" text-justify pr-10 mb-4 flex flex-col bg-[#F1F1F1] p-3 rounded-lg"
+                  className=" lg:text-justify md:pr-10 mb-4 flex flex-col bg-[#F1F1F1] p-3 rounded-lg"
                 >
-                  <h3 className="text-xl font-bold text-center">{exp.title}</h3>
-                  <p className="text-lg text-center">
+                  <h3 className="resume-deg text-center ">{exp.title}</h3>
+                  <p className="lg:text-lg text-center">
                     {exp.company} {exp.location}
                   </p>
-                  <p className="text-gray-600 text-center">{exp.dates}</p>
+                  <p className="resume-date text-center">{exp.dates}</p>
                   <ul className="list-disc pl-5 mt-2">
                     {exp.responsibilities.map((item, idx) => (
                       <li key={idx} className="mb-1">
@@ -61,41 +63,40 @@ const Resume = () => {
         </div>
 
         {/* RIGHT SECTION */}
-        <div className="w-4/5  h-full">
+        <div className="md:w-4/5 xs:w-full  h-full">
           {/* Courses & Certificate Section */}
-          <div className="p-6 ">
-            <h2 className="text-2xl font-bold mb-7 text-center ">
-              Courses & Certificates
-            </h2>
+          <hr className="resume-hr xs:hidden block:block" />
+          <div className="lg:p-6 ">
+            <h2 className="resume-edu ">Courses & Certificates</h2>
             <div>
               {RESUME_DATA.courses_certifications.map((cert, index) => (
                 <div
                   key={index}
                   className="mb-4 text-center flex flex-col bg-[#F1F1F1] p-3 rounded-lg "
                 >
-                  <h3 className="text-xl font-bold">{cert.title}</h3>
-                  <p className="text-lg">
+                  <h3 className="resume-deg">{cert.title}</h3>
+                  <p className="lg:text-lg">
                     {cert.institution} — {cert.location}
                   </p>
-                  <p className="text-gray-600">{cert.dates}</p>
+                  <p className="resume-date">{cert.dates}</p>
                 </div>
               ))}
             </div>
           </div>
           {/* Language Section */}
-          <hr className="my-5 py-[2px] h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:via-neutral-400" />
-          <div className="flex  flex-col  justify-center  items-center p-6 ">
-            <h2 className="text-2xl font-bold mb-3 text-center ">Languages</h2>
-            <div className="w-full pt-10">
+          <hr className="resume-hr" />
+          <div className="flex  flex-col  justify-center  items-center lg:p-6  ">
+            <h2 className="resume-edu">Languages</h2>
+            <div className="w-full lg:pt-10">
               {RESUME_DATA.languages.map((lang, index) => (
                 <div
                   key={index}
                   className="flex flex-col   gap-3 pr-16 bg-[#F1F1F1] p-5 rounded-lg mt-3"
                 >
-                  <p className=" text-lg font-semibold ">
+                  <p className=" lg:text-lg font-semibold ">
                     {lang.name} <span>{lang.level}</span>
                   </p>
-                  <div className="w-full bg-gray-200 rounded-full h-4">
+                  <div className="w-full bg-gray-300 rounded-full h-4">
                     <div
                       className="bg-[#243248] h-full rounded-full"
                       style={{ width: `${lang.percentage}%` }}

@@ -1,10 +1,10 @@
 //Navigation
 export const NAV_LINKS = [
-  { to: "/#home", key: "home", label: "Home", id: "home" },
-  { to: "/#projects", key: "projects", label: "Projects", id: "projects" },
-  { to: "/#skills", key: "skills", label: "Skills", id: "skills" },
-  { to: "/#resume", key: "resume ", label: "Resume ", id: "resume" },
-  { to: "/#contact", key: "contact", label: "Contact", id: "contact" },
+  { to: "/#home", key: "home", label: "Home", id: "nav-home" },
+  { to: "/#projects", key: "projects", label: "Projects", id: "nav-projects" },
+  { to: "/#skills", key: "skills", label: "Skills", id: "nav-skills" },
+  { to: "/#resume", key: "resume ", label: "Resume ", id: "nav-resume" },
+  { to: "/#contact", key: "contact", label: "Contact", id: "nav-contact" },
 ];
 // PROJECTS PAGE DATA
 export const PROJECTS_DATA = [

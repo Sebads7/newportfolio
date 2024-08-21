@@ -41,18 +41,21 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 const Skills = () => {
   return (
-    <div id="skills">
+    <div id="nav-skills">
       {/* TITLE */}
       <ContainerScroll
         title={
           <div className="flex justify-center items-center flex-col">
-            <h2 className="text-5xl font-bold text-center   text-white">
+            <h1
+              className="
+              page-title
+              text-white
+          "
+            >
               My Skills
-            </h2>
+            </h1>
 
-            <h3 className=" text-2xl font-bold tracking-tight text-center bg-gray-200 py-2 px-4 translate-x-10 mt-3  shadow-[5px_5px_0px_0px_rgba(8,112,184)]">
-              Technologies
-            </h3>
+            <h3 className=" skills-sub-title">Technologies</h3>
           </div>
         }
       >
@@ -61,9 +64,11 @@ const Skills = () => {
           className="flex
           justify-center 
           items-center  
-          bg-gray-100/90 
-          rounded-tl-[10rem] 
-          rounded-br-[10rem]  
+          bg-gray-100/90
+            xs:rounded-tl-[5rem] 
+          xs:rounded-br-[5rem]  
+          md:rounded-tl-[10rem] 
+          md:rounded-br-[10rem]  
           border-2 
           border-spacing-2 
           border-white  
@@ -74,11 +79,14 @@ const Skills = () => {
             {skills.map((skill) => {
               const IconComponent = iconMap[skill.icon]; // Get the icon component from the iconMap
               return (
-                <div key={skill.skillName} className=" text-black  ">
-                  <div className="flex flex-col justify-center items-center  pt-5">
+                <div key={skill.skillName} className=" text-black ">
+                  <div className="flex flex-col justify-center items-center xs:pt-2 lg:pt-5">
                     {/* BACKGROUND  CIRCLE */}
 
-                    <svg className="w-28 h-28   " viewBox="0 0 100 100">
+                    <svg
+                      className="xs:w-[4.5rem] xs:h-[4.5rem]  md:w-20 md:h-20 lg:w-28 lg:h-28   "
+                      viewBox="0 0 100 100"
+                    >
                       <circle
                         className="text-[#c4c9d2]  stroke-current"
                         strokeWidth="13"
@@ -109,20 +117,21 @@ const Skills = () => {
                         y="50%"
                         dominantBaseline="middle"
                         textAnchor="middle"
-                        fontSize="17"
-                        className="font-bold fill-current text-[#304463]"
+                        className="font-bold fill-current xs:text-sm md:text-base  lg:text-lg text-[#304463]"
                       >
                         {skill.percentage}%
                       </text>
                     </svg>
-                    <div className="flex justify-center items-center gap-2  pb-5">
+                    <div className="flex justify-center items-center gap-2 xs:pb-2  lg:pb-5">
                       {IconComponent && (
                         <IconComponent
-                          className="text-3xl"
+                          className="xs:text-base md:text-2xl lg:text-3xl"
                           style={{ color: skill.color }}
                         />
                       )}
-                      <p className=" text-lg font-bold ">{skill.skillName}</p>
+                      <p className="xs:text-sm md:text-base lg:text-lg font-bold ">
+                        {skill.skillName}
+                      </p>
                     </div>
                   </div>
                 </div>
