@@ -1,10 +1,10 @@
 //Navigation
 export const NAV_LINKS = [
-  { to: "/#home", key: "home", label: "Home", id: "nav-home" },
-  { to: "/#projects", key: "projects", label: "Projects", id: "nav-projects" },
-  { to: "/#skills", key: "skills", label: "Skills", id: "nav-skills" },
-  { to: "/#resume", key: "resume ", label: "Resume ", id: "nav-resume" },
-  { to: "/#contact", key: "contact", label: "Contact", id: "nav-contact" },
+  { to: "/#home", key: "home", label: "Home", id: "home" },
+  { to: "/#projects", key: "projects", label: "Projects", id: "projects" },
+  { to: "/#skills", key: "skills", label: "Skills", id: "skills" },
+  { to: "/#resume", key: "resume", label: "Resume", id: "resume" },
+  { to: "/#contact", key: "contact", label: "Contact", id: "contact" },
 ];
 // PROJECTS PAGE DATA
 export const PROJECTS_DATA = [
@@ -71,7 +71,7 @@ export const skills = [
   { skillName: "Java", percentage: 50, icon: "java", color: "#007396" }, // Java color
 ];
 
-export const RESUME_DATA = {
+export const data_resume = {
   education: [
     {
       degree: "Associate of Science in Computer Science",
@@ -89,7 +89,7 @@ export const RESUME_DATA = {
   experience: [
     {
       title: "Freelance Full-Stack Developer",
-      dates: "August 2023 - Present",
+      dates: "2023 - Present",
       responsibilities: [
         "Engaged in freelance projects to pursue a career transition into programming.",
       ],
@@ -105,16 +105,6 @@ export const RESUME_DATA = {
         "Performed carpentry, painting, kitchen and bathroom remodeling, and other construction tasks",
       ],
     },
-    // {
-    //   title: "Front-Desk",
-    //   company: "Medical Office",
-    //   location: "Charlotte, NC, USA",
-    //   dates: "2011 - 2012",
-    //   responsibilities: [
-    //     "Provided technical support for office equipment and resolved technical issues.",
-    //     "Maintained accurate and organized customer records.",
-    //   ],
-    // },
   ],
   courses_certifications: [
     {

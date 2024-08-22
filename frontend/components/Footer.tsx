@@ -7,9 +7,9 @@ import { MdEmail } from "react-icons/md";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-white/95 text-black py-6">
-      <div className="container w-full mx-auto flex xs:flex-col lg:flex-row xs:justify-center items-center lg:justify-evenly">
-        <div className="flex  flex-col">
+    <footer className="relative  text-black md:mt-14 ">
+      <div className=" w-full  absolute flex xs:flex-col lg:flex-row xs:justify-center items-center lg:justify-evenly bg-white/95  py-7 ">
+        <div className="flex  flex-col ">
           <div className="flex items-center mb-1 ">
             <MdEmail className="" size={15} />
             <p className="">disalvatore.sebastian@gmail.com</p>
@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         {/* LINKS */}
-        <div className="mb-4 flex p-3 mt-2 gap-4 bg-gray-200 transition-all delay-100 duration-150 ease-in-out hover:-translate-y-2  hover:scale-[1.02] shadow-footer ">
+        <div className="mb-4 flex p-3 mt-2 gap-4 bg-gray-200  transition-all delay-100 duration-150 ease-in-out hover:-translate-y-2  hover:scale-[1.02] shadow-footer ">
           {/* LINKEDIN  */}
           <div className="flex justify-center items-center ">
             <FaLinkedin className="fill-blue-600" />
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
             </a>
           </div>
         </div>
-        <div>
+        <div className="">
           <p className="text-gray-800  flex flex-col text-center  ">
             &copy; {new Date().getFullYear()} Designed and Developed by
             <span>Sebastian Di Salvatore. All Rights Reserved.</span>

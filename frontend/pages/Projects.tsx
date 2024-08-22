@@ -18,7 +18,7 @@ const Projects = () => {
        !dark:bg-dot-white/[0.2] 
        !bg-dot-black/[0.2] 
        "
-      id="nav-projects"
+      id="projects"
     >
       <div className=" pointer-events-none inset-0 flex items-center justify-center project-div-bg "></div>
       <div

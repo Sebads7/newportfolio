@@ -35,14 +35,14 @@ export const ContainerScroll = ({
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
-    <div className="md:h-[70rem]    relative" ref={containerRef}>
+    <div className="md:h-[60rem]  relative" ref={containerRef}>
       <div
-        className="sticky top-0 transition-all  duration-200 ease-in-out  "
+        className="sticky top-0 transition-all  duration-100 ease-in-out "
         style={{
           perspective: "1200px",
         }}
       >
-        <div className="pt-36"> {title}</div>
+        <div className="pt-36 "> {title}</div>
 
         <Card rotate={rotate} translate={translate} scale={scale}>
           <div className="xl:px-32 xs:px-auto "> {children}</div>

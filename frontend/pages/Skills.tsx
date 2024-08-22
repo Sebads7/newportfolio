@@ -41,11 +41,11 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 const Skills = () => {
   return (
-    <div id="nav-skills">
+    <div className="" id="skills">
       {/* TITLE */}
       <ContainerScroll
         title={
-          <div className="flex justify-center items-center flex-col">
+          <div className="flex justify-center items-center flex-col  lg:w-[40rem] lg:mx-auto ">
             <h1
               className="
               page-title
@@ -64,7 +64,8 @@ const Skills = () => {
           className="flex
           justify-center 
           items-center  
-          bg-gray-100/90
+          xs:bg-gray-100
+          md:bg-gray-100/95
             xs:rounded-tl-[5rem] 
           xs:rounded-br-[5rem]  
           md:rounded-tl-[10rem] 

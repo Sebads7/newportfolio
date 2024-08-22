@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useRef } from "react";
 
 interface AnimatedDotsProps {
@@ -17,15 +15,13 @@ const AnimatedDots: React.FC<AnimatedDotsProps> = ({ onLoad }) => {
     if (!ctx) return;
 
     const handleResize = () => {
-      if (canvasRef.current) {
-        canvasRef.current.width = window.innerWidth;
-        canvasRef.current.height = window.innerHeight;
-      }
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     };
 
     handleResize(); // Set initial size
 
-    const dots = [...Array(30)].map(() => ({
+    const dots = [...Array(15)].map(() => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 2 + 2,
@@ -49,7 +45,6 @@ const AnimatedDots: React.FC<AnimatedDotsProps> = ({ onLoad }) => {
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
         ctx.fill();
-        ctx.stroke();
       });
 
       requestAnimationFrame(animate);

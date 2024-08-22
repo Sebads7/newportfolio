@@ -8,15 +8,15 @@ import { NAV_LINKS } from "../constants/index";
 import Link from "next/link";
 import { Typewriter } from "react-simple-typewriter";
 
-interface NavBarProps {
-  loading: boolean;
-}
+// interface NavBarProps {
+//   loading: boolean;
+// }
 
-const NavBar: React.FC<NavBarProps> = ({ loading }) => {
+const NavBar: React.FC = ({}) => {
   const [activeIndex, setActiveIndex] = useState<string | null>(null);
   const [isSticky, setIsSticky] = useState(false);
 
-  const [currentPath, setCurrentPath] = useState<string>("");
+  const [currentPath, setCurrentPath] = useState<string>("nav-home");
 
   const isStickyNav = () => {
     if (window.scrollY > 60) {
@@ -39,12 +39,12 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setCurrentPath(`/#${entry.target.id}`);
+            setCurrentPath(`${entry.target.id}`);
             console.log(entry.target.id);
           }
         });
       },
-      { threshold: 0.5 },
+      { threshold: 0.1 },
     );
 
     sections.forEach((section) => {
@@ -64,13 +64,13 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
       <div
         className={` bg-gray-100 p-3  transition-all duration-100 ease-in-out ${isSticky ? "hidden" : ""}`}
       >
-        <div className="flex xs:justify-evenly lg:justify-between  w-full   lg:px-20">
-          <div className="flex xs:flex-col lg:flex-row items-start gap-3">
+        <div className="flex  md:justify-between  w-full   lg:px-20">
+          <div className="flex items-start gap-3  xs:hidden md:flex">
             {/* EMAIL */}
             <div className="flex justify-center items-center gap-1">
               <CiMail />
               <a className="pr-5" href="mailto:ds.sebastian@outlook.com">
-                ds.sebastian@outlook.com
+                disalvatore.sebastian@gmail.com
               </a>
             </div>
             {/* PHONE */}
@@ -82,7 +82,7 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
             </div>
           </div>
           {/* RIGHT SIDE */}
-          <div className="flex xs:flex-col lg:flex-row items-start gap-3">
+          <div className="flex xs:mx-auto md:mx-0 xs:gap-24 md:gap-3">
             {/* LINKEDIN */}
             <div className="flex justify-center items-center gap-1">
               <FaLinkedin className="fill-blue-600" />
@@ -111,19 +111,17 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
           </div>
         </div>
       </div>
-
+      {/* NAV AND TYPEWRITER */}
       <div
-        className={`justify-center items-center flex  w-full h-20 transition-all duration-100 ease-in-out  ${
-          loading ? "bg-black" : "bg-black/50"
-        } ${isSticky ? ` !bg-black fixed top-0` : ""} 
+        className={`justify-center items-center flex  w-full h-20 transition-all duration-100 ease-in-out bg-black/50 ${isSticky ? ` !bg-black fixed top-0` : ""} 
         }`}
       >
         <div
           className={`absolute  translate-y-10 left-1/2 transform -translate-x-1/2 h-[1px] rounded-sm transition-all z-20 duration-300 delay-75 ease-in-out  ${isSticky ? "w-full bg-blue-200" : "w-0 bg-blue-200"}`}
         ></div>
-        <div className="lg:grid lg:grid-cols-3 md:flex md:flex-col w-full md:px-16">
+        <div className="lg:grid lg:grid-cols-3 md:flex md:flex-col w-full md:px-16 xs:pb-5 md:pb-0">
           {/* NAME TYPEWRITER EFFECT */}
-          <div className="flex items-center justify-center h-full  lg:pl-2">
+          <div className="flex items-center justify-center xs:py-2 md:py-0 h-full  lg:pl-2">
             <h2 className="xs:text-lg lg:text-2xl font-semibold text-white">
               <Typewriter
                 words={["SEBASTIAN DI SALVATORE", "FULL-STACK DEVELOPER"]}
@@ -136,8 +134,9 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
               />
             </h2>
           </div>
-          <nav className="flex justify-center items-center col-span-2 text-white ">
-            <ul className="flex items-center md:gap-5 xs:text-base md:text-lg font-thin">
+          {/* NAVIGATION */}
+          <nav className="flex justify-center items-center col-span-2  text-white ">
+            <ul className="flex items-center xs:gap-1 md:gap-5   xs:text-base md:text-lg  ">
               {NAV_LINKS.map((link) => (
                 <li
                   key={link.key}
@@ -145,8 +144,8 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
                 >
                   <Link
                     href={link.to}
-                    className={`flex relative xs:px-2 md:px-5 xs:py-[2px] md:py-1 rounded-lg ${
-                      currentPath === link.to
+                    className={`flex relative xs:px-2  md:px-5 xs:py-[2px] md:py-1 rounded-lg ${
+                      currentPath === link.id
                         ? "border-[.1px] bg-blue-50 hover:scale-[1.05] transition-all ease-in-out text-black"
                         : ""
                     }`}
@@ -156,10 +155,10 @@ const NavBar: React.FC<NavBarProps> = ({ loading }) => {
                   >
                     {link.label}
                     <div
-                      className={`absolute -bottom-1 left-1/2 transform -translate-x-1/2 h-[3px] rounded-sm transition-all duration-300 delay-75 ease-in-out md:hidden lg:block ${
+                      className={`absolute -bottom-0 left-1/2 transform -translate-x-1/2 h-[3px] rounded-sm transition-all duration-300 delay-75 ease-in-out xs:hidden ${currentPath !== link.id ? "lg:block" : ""}  ${
                         currentPath === link.to
                           ? "w-0 bg-transparent"
-                          : activeIndex === link.key
+                          : activeIndex === link.id
                             ? "w-3/5 bg-blue-200"
                             : "w-0 bg-blue-200"
                       }`}

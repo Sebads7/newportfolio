@@ -5,19 +5,19 @@ import { IoIosPhonePortrait } from "react-icons/io";
 
 const Contact = () => {
   return (
-    <section className="contact-section  " id="nav-contact">
-      <div className="contact-container ">
+    <section className="contact-section z-[2]  " id="contact">
+      <div className="contact-container z-[2] ">
         <h1 className=" text-black  text-center -tracking-tight xs:text-2xl md:text-4xl lg:text-5xl  font-bold mt-10">
           Contact
         </h1>
         <div className="grid sx:grid-cols-1 lg:grid-cols-2 h-full  w-full">
           {/* LEFT SIDE */}
           <section className="flex w-full h-full  text-black xs:pt-5 md:pt-10">
-            <div className="w-full  h-full lg:pt-44 ">
+            <div className="w-full  h-full lg:pt-24 ">
               <h2 className="text-center xs:pb-4 lg:pb-7 xs:text-base md:text-lg lg:text-2xl font-light tracking-tight">
                 You can reach me directly at:
               </h2>
-              <div className="xs:bg-slate-100 mx-auto py-4 xs:w-[240px] md:w-[350px]">
+              <div>
                 <div className="w-full flex flex-col justify-center xs:gap-5 lg:gap-10  ">
                   {/* EMAIL */}
                   <div className="flex flex-col  justify-center items-center text-black ">
