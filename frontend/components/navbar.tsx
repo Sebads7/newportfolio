@@ -59,7 +59,7 @@ const NavBar: React.FC = ({}) => {
   }, []);
 
   return (
-    <div className={`block w-full top-0 z-50 `}>
+    <div className={`absolute w-full top-0 z-50 `}>
       {/* TOP BAR */}
       <div
         className={` bg-gray-100 p-3  transition-all duration-100 ease-in-out ${isSticky ? "hidden" : ""}`}

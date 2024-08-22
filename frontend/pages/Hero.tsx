@@ -12,9 +12,6 @@ const Hero = () => {
       className={`flex flex-col  justify-center items-center w-full md:pt-24   lg:h-[60rem] xs:h-[40rem]   pb-10 `}
       id="home"
     >
-      <div className="z-50 w-full absolute top-0">
-        <Navbar />
-      </div>
       <div className="-z-0">
         <ParticleComponent onLoad={() => setLoading(false)} />
       </div>
