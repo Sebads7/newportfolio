@@ -16,7 +16,7 @@ const NavBar: React.FC = ({}) => {
   const [activeIndex, setActiveIndex] = useState<string | null>(null);
   const [isSticky, setIsSticky] = useState(false);
 
-  const [currentPath, setCurrentPath] = useState<string>("nav-home");
+  const [currentPath, setCurrentPath] = useState<string>("");
 
   const isStickyNav = () => {
     if (window.scrollY > 60) {

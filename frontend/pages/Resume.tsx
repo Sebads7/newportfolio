@@ -3,8 +3,6 @@
 import React from "react";
 import { data_resume } from "../constants/index";
 
-console.log(data_resume);
-
 // Define TypeScript interfaces for the data if not already defined
 
 const Resume: React.FC = () => {

@@ -1,10 +1,8 @@
 "use client";
 
-import AnimatedDots from "@/components/AnimatedDots";
 import React, { useState } from "react";
-import Navbar from "@/components/NavBar";
-
-import ParticleComponent from "@/components/AnimatedBackGround";
+import Navbar from "../components/NavBar";
+import ParticleComponent from "../components/AnimatedBackGround";
 
 const Hero = () => {
   const [loading, setLoading] = useState(true);
@@ -14,7 +12,6 @@ const Hero = () => {
       className={`flex flex-col  justify-center items-center w-full md:pt-24   lg:h-[60rem] xs:h-[40rem]   pb-10 `}
       id="home"
     >
-      {/* <Navbar loading={loading} /> */}
       <div className="z-50 w-full absolute top-0">
         <Navbar />
       </div>
@@ -22,9 +19,8 @@ const Hero = () => {
         <ParticleComponent onLoad={() => setLoading(false)} />
       </div>
 
-      {/*  <AnimatedDots onLoad={() => setLoading(false)} /> */}
       {!loading && (
-        <div className="z-10 flex flex-col justify-center  items-center xs:w-5/6 lg:w-2/4 xs:py-5  lg:py-24 bg-white/90 shadow-[10px_10px_10px_0px_rgba(8,112,184)] text-color ">
+        <div className="z-10 flex flex-col justify-center  items-center xs:w-5/6 lg:w-2/4 xs:py-5  lg:py-24 bg-white/90 shadow-[10px_10px_10px_0px_rgba(8,112,184)] text-color animate-fade-in-right animate-delay-75 opacity-0  ">
           <div className="flex flex-col lg:justify-start  justify-center items-center h-full ">
             {/* INTRO TEXT */}
             <div className="xs:mb-3 md:mb-10 xs:w-3/5 md:w-full ">

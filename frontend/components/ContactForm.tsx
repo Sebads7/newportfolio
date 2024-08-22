@@ -61,47 +61,87 @@ const ContactForm = () => {
   });
 
   // Define a submit handler.
+  // const onSubmit = async (value: z.infer<typeof formSchema>) => {
+  //   // console.log(value);
+  //   console.log(form.getValues());
+  //   // Send the data.
+  //   setSubmitting(true);
+  //   setSubmitError("");
+
+  //   const isValid = await form.trigger();
+
+  //   console.log(isValid);
+
+  //   if (!isValid) {
+  //     // console.log(form.formState.errors);
+  //     setSubmitting(false);
+  //     // setSubmitError("Please fill out all required fields.");
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await fetch(
+  //       "https://construction-site-1qd6.onrender.com/send-email",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(value),
+  //       },
+  //     );
+  //     if (response.ok) {
+  //       console.log("Email sent successfully");
+  //       form.reset();
+  //       setSubmitting(false);
+  //     } else {
+  //       throw new Error("Server is not responding");
+  //     }
+  //   } catch (error) {
+  //     setSubmitting(false);
+  //     setSubmitError("Error sending email");
+  //     // console.log(form.getValues());
+  //     // console.log(error);
+  //   }
+  // };
+
   const onSubmit = async (value: z.infer<typeof formSchema>) => {
-    // console.log(value);
-    console.log(form.getValues());
-    // Send the data.
+    console.log("Form Values:", value);
+
     setSubmitting(true);
     setSubmitError("");
 
-    const isValid = await form.trigger();
-
-    console.log(isValid);
-
-    if (!isValid) {
-      // console.log(form.formState.errors);
-      setSubmitting(false);
-      // setSubmitError("Please fill out all required fields.");
-      return;
-    }
-
     try {
-      const response = await fetch(
-        "https://construction-site-1qd6.onrender.com/send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(value),
-        },
-      );
-      if (response.ok) {
-        console.log("Email sent successfully");
-        form.reset();
+      // Direct validation in submit handler
+      const isValid = await form.trigger();
+      if (!isValid) {
         setSubmitting(false);
-      } else {
-        throw new Error("Server is not responding");
+        setSubmitError("Please fill out all required fields.");
+        return;
       }
+
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ value }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(
+          `Server responded with status ${response.status}: ${errorText}`,
+        );
+      }
+
+      console.log("Email sent successfully");
+      form.reset();
     } catch (error) {
+      console.error("Error sending email:", error);
+      setSubmitError("Error sending email. Please try again later.");
+    } finally {
       setSubmitting(false);
-      setSubmitError("Error sending email");
-      // console.log(form.getValues());
-      // console.log(error);
     }
   };
 
@@ -213,7 +253,7 @@ const ContactForm = () => {
                     cy="12"
                     r="10"
                     stroke="currentColor"
-                    stroke-width="4"
+                    strokeWidth="4"
                   ></circle>
                   <path
                     className="opacity-75"

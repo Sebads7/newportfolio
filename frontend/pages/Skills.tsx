@@ -2,7 +2,7 @@
 
 import React from "react";
 import { skills } from "@/constants";
-import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import { ContainerScroll } from "../components/ui/container-scroll-animation";
 
 import {
   FaHtml5,
