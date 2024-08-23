@@ -17,7 +17,7 @@ export const ContainerScroll = ({
 
   React.useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 800);
     };
     checkMobile();
     window.addEventListener("resize", checkMobile);
@@ -27,10 +27,10 @@ export const ContainerScroll = ({
   }, []);
 
   const scaleDimensions = () => {
-    return isMobile ? [0.7, 0.9] : [0.7, 0.8];
+    return isMobile ? [0.7, 0.7] : [0.9, 0.8];
   };
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [10, 0]);
+  const rotate = useTransform(scrollYProgress, [0, 0], [0, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.9], scaleDimensions());
   const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
@@ -64,7 +64,7 @@ export const Card = ({
 }) => {
   return (
     <motion.div
-      className="transition-all duration-300 ease-in-out "
+      className="transition-all duration-500 ease-in-out "
       style={{
         rotateX: rotate,
         rotateY: rotate,

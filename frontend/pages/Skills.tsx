@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { skills } from "@/constants";
 import { ContainerScroll } from "../components/ui/container-scroll-animation";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 import {
   FaHtml5,
@@ -40,12 +41,22 @@ const iconMap: { [key: string]: React.ElementType } = {
 };
 
 const Skills = () => {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef);
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView, , mainControls]);
+
   return (
-    <div className="" id="skills">
+    <div className="bg-black" id="skills" ref={containerRef}>
       {/* TITLE */}
       <ContainerScroll
         title={
-          <div className="flex justify-center items-center flex-col  lg:w-[40rem] lg:mx-auto ">
+          <div className="flex justify-center items-center flex-col  w-auto mx-auto ">
             <h1
               className="
               page-title
@@ -60,7 +71,7 @@ const Skills = () => {
         }
       >
         {/* SKILLS GRID */}
-        <div
+        <motion.div
           className="flex
           justify-center 
           items-center  
@@ -75,17 +86,33 @@ const Skills = () => {
           border-white  
           py-5 
           shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] "
+          animate={mainControls}
+          initial="hidden"
+          variants={{
+            hidden: { opacity: 0, x: 100 },
+            visible: { opacity: 1, x: 0 },
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.5,
+            ease: [0.4, 0.7, 0.4, 1.01],
+          }}
         >
-          <div className="  grid xs:grid-cols-3  sm:grid-cols-4  lg:grid-cols-5 lg:gap-x-14  sm:w-full lg:w-auto ">
-            {skills.map((skill) => {
-              const IconComponent = iconMap[skill.icon]; // Get the icon component from the iconMap
-              return (
-                <div key={skill.skillName} className=" text-black ">
-                  <div className="flex flex-col justify-center items-center xs:pt-2 lg:pt-5">
-                    {/* BACKGROUND  CIRCLE */}
+          <motion.div className="  grid xs:grid-cols-3  sm:grid-cols-4  md:grid-cols-5 lg:gap-x-14 sm:px-6 xs:gap-x-4  w-auto ">
+            {skills.map((skill, index) => {
+              const IconComponent = iconMap[skill.icon];
 
-                    <svg
-                      className="xs:w-[4.5rem] xs:h-[4.5rem]  md:w-20 md:h-20 lg:w-28 lg:h-28   "
+              const strokeDasharray = 251.2; // Circumference of the circle (2 * Math.PI * r)
+              const initialDashoffset = strokeDasharray; // 100% dashoffset, the full circumference
+              const finalDashoffset =
+                strokeDasharray - (strokeDasharray * skill.percentage) / 100; // Calculate based on percentage
+
+              return (
+                <motion.div key={skill.skillName} className=" text-black ">
+                  <motion.div className="flex flex-col justify-center items-center xs:pt-2 lg:pt-5">
+                    {/* BACKGROUND  CIRCLE */}
+                    <motion.svg
+                      className="xs:w-[4.5rem] xs:h-[4.5rem] sm:w-[5rem] sm:h-[5rem]  md:w-20 md:h-20 lg:w-28 lg:h-28   "
                       viewBox="0 0 100 100"
                     >
                       <circle
@@ -96,22 +123,27 @@ const Skills = () => {
                         r="40"
                         fill="transparent"
                       ></circle>
-                      <circle
-                        className={` text-[#304463] -rotate-90  origin-center stroke-current progress-circle hover:progress-circle ${skill.color}`}
-                        style={
-                          {
-                            "--skill-percentage": skill.percentage,
-                          } as React.CSSProperties
-                        }
+                      <motion.circle
+                        className={` text-[#3a6077] -rotate-90  origin-center stroke-current `}
                         strokeWidth="10"
                         cx="50"
                         cy="50"
                         r="40"
                         fill="transparent"
-                        strokeDasharray={`251.2`}
-                        strokeDashoffset={`calc(251.2px - (251.2px * ${skill.percentage} ) / 100)`}
+                        strokeDasharray={strokeDasharray}
+                        animate={mainControls}
+                        initial="hidden"
+                        variants={{
+                          hidden: { strokeDashoffset: initialDashoffset },
+                          visible: { strokeDashoffset: finalDashoffset },
+                        }}
+                        transition={{
+                          duration: 2,
+                          ease: "easeOut",
+                          delay: 0.5,
+                        }}
                         strokeLinecap="round"
-                      ></circle>
+                      ></motion.circle>
 
                       <text
                         x="50%"
@@ -122,7 +154,7 @@ const Skills = () => {
                       >
                         {skill.percentage}%
                       </text>
-                    </svg>
+                    </motion.svg>
                     <div className="flex justify-center items-center gap-2 xs:pb-2  lg:pb-5">
                       {IconComponent && (
                         <IconComponent
@@ -134,12 +166,12 @@ const Skills = () => {
                         {skill.skillName}
                       </p>
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               );
             })}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </ContainerScroll>
     </div>
   );

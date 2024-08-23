@@ -1,23 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { PROJECTS_DATA } from "../constants/index";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 650) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    };
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <section
-      className="flex
-       py-24  
-       w-full 
-       h-[80rem]  
-       relative  
-       !bg-white
-       !dark:bg-dot-white/[0.2] 
-       !bg-dot-black/[0.2] 
-       "
+      className="flex py-24   w-full  h-[85rem]    relative    !bg-white !dark:bg-dot-white/[0.2]  !bg-dot-black/[0.2] "
       id="projects"
     >
       <div className=" pointer-events-none inset-0 flex items-center justify-center project-div-bg "></div>
@@ -45,27 +54,26 @@ const Projects = () => {
         {/* PROJECTS INFO */}
         <div className="relative w-full h-[50rem]  ">
           {/* Buttons */}
-          <div
-            className="flex 
-          flex-wrap 
-          justify-center 
-          w-full 
-          xs:px-5 
-          md:px-14  
-          gap-4 
-          mt-10"
-          >
-            {PROJECTS_DATA.map((project, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`py-2 
+          <div className="flex flex-col lg:justify-center gap-6 mt-10 w-full mx-auto xs:px-5  md:px-14  ">
+            {/* <div className=" justify-center w-full text-2xl sm:hidden xs:flex ">
+              <MdKeyboardArrowUp />
+            </div> */}
+
+            <div
+              className="flex  justify-center flex-wrap 
+          gap-4 "
+            >
+              {PROJECTS_DATA.slice(0, isMobile ? 2 : PROJECTS_DATA.length).map(
+                (project, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveIndex(index)}
+                    className={`py-2 
                   px-4 
                   xs:text-sm
                   md:text-base
-                  xs:w-full    
-                      
-                  lg:w-auto
+                  xs:w-full      
+                  sm:w-auto
                   rounded-md 
                   text-white 
                   project-button-fx   ${
@@ -73,10 +81,15 @@ const Projects = () => {
                       ? "bg-[#2b3963] cursor-default"
                       : "bg-[#B4B4B8] hover:bg-[#a5a5b4] "
                   }`}
-              >
-                {project.title}
-              </button>
-            ))}
+                  >
+                    {project.title}
+                  </button>
+                ),
+              )}
+            </div>
+            {/* <div className="flex justify-center w-full text-2xl sm:hidden xs:flex ">
+              <MdKeyboardArrowDown />
+            </div> */}
           </div>
 
           {/* Projects */}
@@ -105,11 +118,11 @@ const Projects = () => {
                   >
                     {project.title}
                   </h2>
-                  <p className=" mb-8 h-[7rem] text-center xs:text-sm md:text-base">
+                  <p className=" mb-8 h-auto text-center xs:text-sm md:text-base">
                     {project.description}
                   </p>
                   {/* TECHNOLOGIES */}
-                  <div className="flex items-start justify-center flex-wrap gap-2 mb-7 h-[4rem] ">
+                  <div className="flex items-start justify-center flex-wrap mb-5 gap-2 h-[4rem] ">
                     {project.technologies.map((tech, idx) => (
                       <span
                         key={idx}

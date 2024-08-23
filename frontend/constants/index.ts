@@ -20,15 +20,16 @@ export const PROJECTS_DATA = [
       "Node.js",
       "Express",
     ],
-    imageUrl: "/images/construction-site.png",
+    imageUrl: "/images/construction-site.webp",
     liveLink: "https://abjremodeling.netlify.app/",
     repoLink: "https://github.com/Sebads7/construction-site",
   },
   {
     title: "Frontend-Mentor-Crowd-Funding main page",
-    description: "This was my first challenge, developing a landing page.",
+    description:
+      "As one of my first projects, I built a responsive crowdfunding product page where users can make pledges, track progress bar, and see the number of backers increase. The page includes a bookmark toggle, hover states for interactivity, and optimal layouts across devices.",
     technologies: ["HTML", "CSS", "JavaScript"],
-    imageUrl: "/images/crowdfunding.png",
+    imageUrl: "/images/crowdfunding.webp",
     liveLink:
       "https://sebads7.github.io/Frontend-Mentor-crowdfunding-product-page-main/",
     repoLink:
@@ -36,11 +37,21 @@ export const PROJECTS_DATA = [
   },
   {
     title: "Interactive Card Landing Page",
-    description: "A brief description of Project Two.",
-    technologies: ["Vue", "Bootstrap", "Express"],
-    imageUrl: "/images/interactive-card.png",
+    description:
+      "In this project, I developed a responsive card details entry page as part of a front-end challenge. The challenge required implementing a form that captures user card information, including card number, name, expiration date, and CVV.",
+    technologies: ["HTML", "Bootstrap", "CSS", "JavaScript"],
+    imageUrl: "/images/interactive-card.webp",
     liveLink: "https://sebads7.github.io/Interactive-card-details-form/",
     repoLink: "https://github.com/Sebads7/Interactive-card-details-form",
+  },
+  {
+    title: "Trillo Hotel Booking Landing Page",
+    description:
+      " A modern and responsive landing page for a hotel booking platform, featuring a grid layout, custom checkboxes, and radio buttons. The page includes a sidebar for looking at hotels,flights, car rental, and a map section for location details.",
+    technologies: ["HTML", "Bootstrap", "SASS"],
+    imageUrl: "/images/trillo-project.webp",
+    liveLink: "https://sebads7.github.io/trillo-project-advanced-css-sass/",
+    repoLink: "https://github.com/Sebads7/trillo-project-advanced-css-sass",
   },
 ];
 

@@ -25,8 +25,20 @@ html {
   }
 }
 
+.progress-circle {
+  animation: progressAnimation 2s ease-out;
+}
+
 .word {
   @apply inline-block opacity-0;
+}
+
+/* NAVIGATION COMPONENT */
+
+/* HERO PAGE */
+
+.container-div {
+  @apply xs:w-auto  xs:py-10 xs:mt-20 lg:mt-0 lg:w-2/4 lg:py-24 bg-white/90 shadow-[10px_10px_10px_0px_rgba(8,112,184)];
 }
 
 .page-title {
@@ -34,7 +46,6 @@ html {
   text-center;
 }
 
-/* HERO PAGE */
 .button-hero-effect {
   @apply lg:hover:bg-[#2c4253]  lg:hover:scale-105 bg-[#2b3963] text-white rounded-md  transition-all ease-in-out delay-75;
 }
@@ -134,10 +145,6 @@ html {
 /* FOOTER COMPONENT */
 .shadow-footer {
   @apply shadow-[5px_5px_rgba(8,_112,_184,_0.4),_10px_10px_rgba(8,_112,_184,_0.3),_15px_25px_rgba(0,_98,_90,_0.05)];
-}
-
-.progress-circle {
-  animation: progressAnimation 2s ease-out;
 }
 
 @layer utilities {

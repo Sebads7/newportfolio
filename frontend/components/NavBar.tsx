@@ -62,10 +62,10 @@ const NavBar: React.FC = ({}) => {
     <div className={`absolute w-full top-0 z-50 `}>
       {/* TOP BAR */}
       <div
-        className={` bg-gray-100 p-3  transition-all duration-100 ease-in-out ${isSticky ? "hidden" : ""}`}
+        className={` bg-gray-100 xs:p-[6px] md:p-3  transition-all duration-100 ease-in-out ${isSticky ? "hidden" : ""}`}
       >
-        <div className="flex  md:justify-between  w-full   lg:px-20">
-          <div className="flex items-start gap-3  xs:hidden md:flex">
+        <div className="flex  sm:justify-between sm:px-2  w-full   lg:px-20">
+          <div className="flex items-start gap-3  xs:hidden sm:flex">
             {/* EMAIL */}
             <div className="flex justify-center items-center gap-1">
               <CiMail />
@@ -82,7 +82,7 @@ const NavBar: React.FC = ({}) => {
             </div>
           </div>
           {/* RIGHT SIDE */}
-          <div className="flex xs:mx-auto md:mx-0 xs:gap-24 md:gap-3">
+          <div className="flex xs:mx-auto sm:mx-0 xs:gap-24 sm:gap-10 md:gap-3">
             {/* LINKEDIN */}
             <div className="flex justify-center items-center gap-1">
               <FaLinkedin className="fill-blue-600" />
@@ -113,16 +113,18 @@ const NavBar: React.FC = ({}) => {
       </div>
       {/* NAV AND TYPEWRITER */}
       <div
-        className={`justify-center items-center flex  w-full h-20 transition-all duration-100 ease-in-out bg-black/50 ${isSticky ? ` !bg-black fixed top-0` : ""} 
+        className={`justify-center items-center flex  w-full h-20 transition-all duration-100 ease-in-out  bg-black/70   lg:bg-black/50 ${isSticky ? ` !bg-black fixed top-0` : ""} 
         }`}
       >
+        {/* HOVER EFFECT */}
         <div
           className={`absolute  translate-y-10 left-1/2 transform -translate-x-1/2 h-[1px] rounded-sm transition-all z-20 duration-300 delay-75 ease-in-out  ${isSticky ? "w-full bg-blue-200" : "w-0 bg-blue-200"}`}
         ></div>
-        <div className="lg:grid lg:grid-cols-3 md:flex md:flex-col w-full md:px-16 xs:pb-5 md:pb-0">
+        {/* END OF DIV */}
+        <div className="lg:grid lg:grid-cols-3 md:grid-cols-2 sm:flex sm:flex-col w-full md:px-16 sm:space-y-4 md:space-y-0">
           {/* NAME TYPEWRITER EFFECT */}
-          <div className="flex items-center justify-center xs:py-2 md:py-0 h-full  lg:pl-2">
-            <h2 className="xs:text-lg lg:text-2xl font-semibold text-white">
+          <div className="flex items-center justify-center  h-full  lg:pl-2 ">
+            <h2 className="xs:text-lg xs:pt-2 md:pt-0 lg:text-2xl font-semibold text-white">
               <Typewriter
                 words={["SEBASTIAN DI SALVATORE", "FULL-STACK DEVELOPER"]}
                 loop={false}
@@ -136,17 +138,17 @@ const NavBar: React.FC = ({}) => {
           </div>
           {/* NAVIGATION */}
           <nav className="flex justify-center items-center col-span-2  text-white ">
-            <ul className="flex items-center xs:gap-1 md:gap-5   xs:text-base md:text-lg  ">
+            <ul className="flex items-center xs:gap-1 sm:gap-7  md:gap-3 xs:text-base md:text-lg ">
               {NAV_LINKS.map((link) => (
                 <li
                   key={link.key}
-                  className="relative w-full h-full cursor-pointer"
+                  className="relative w-full h-full cursor-pointer xs:pb-3 md:pb-0"
                 >
                   <Link
                     href={link.to}
                     className={`flex relative xs:px-2  md:px-5 xs:py-[2px] md:py-1 rounded-lg ${
                       currentPath === link.id
-                        ? "border-[.1px] bg-blue-50 hover:scale-[1.05] transition-all ease-in-out text-black"
+                        ? "sm:border-[.1px] xs:text-[#2b3963]  sm:bg-blue-50 lg:hover:scale-[1.05] transition-all ease-in-out text-black"
                         : ""
                     }`}
                     onClick={() => setCurrentPath(link.to)}
