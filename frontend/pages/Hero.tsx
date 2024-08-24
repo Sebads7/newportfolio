@@ -1,22 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-import Navbar from "../components/NavBar";
 import ParticleComponent from "../components/AnimatedBackGround";
 
 const Hero = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   return (
     <section
-      className={`flex flex-col  justify-center items-center w-full md:pt-24 lg:h-[60rem] xs:h-[43rem]   pb-10 `}
+      className={`flex flex-col  justify-center items-center  w-full md:pt-24 lg:h-[60rem] xs:h-[43rem]   pb-10 `}
       id="home"
     >
       <div className="-z-0">
-        <ParticleComponent onLoad={() => setLoading(false)} />
+        <ParticleComponent onLoad={() => setLoading(true)} />
       </div>
 
-      {!loading && (
+      {/* <div
+        className="fixed bg-black w-full h-full -z-0"
+        onLoad={() => setLoading(true)}
+      ></div> */}
+
+      {loading && (
         <div className="z-10 container-div flex flex-col justify-center  items-center  text-color animate-fade-in-right animate-delay-75 opacity-0 ">
           <div className="flex flex-col lg:justify-start  justify-center items-center h-full ">
             {/* INTRO TEXT */}

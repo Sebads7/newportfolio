@@ -2,11 +2,30 @@
 
 import React from "react";
 import { data_resume } from "../constants/index";
+import useInViewAnimation from "@/components/hooks/useInView";
+import { motion } from "framer-motion";
+import useScreenSizes from "@/components/hooks/useScreenSizes";
 
 // Define TypeScript interfaces for the data if not already defined
 
 const Resume: React.FC = () => {
   const resumePDF = "/Resume-SebastianDS.pdf";
+
+  const { isMobile, isLgScreen } = useScreenSizes();
+
+  const { ref: refEducation, mainControls: controlsEducation } =
+    useInViewAnimation();
+  const { ref: refExperience, mainControls: controlsExperience } =
+    useInViewAnimation();
+  const { ref: refLanguages, mainControls: controlsLanguages } =
+    useInViewAnimation();
+  const { ref: refCourses, mainControls: controlsCourses } =
+    useInViewAnimation();
+
+  // Conditional check to avoid applying animations before the state is set
+  if (isMobile === null || isLgScreen === null) {
+    return null;
+  }
 
   return (
     <div
@@ -25,9 +44,26 @@ const Resume: React.FC = () => {
 
       <div className="container  grid lg:grid-cols-2 place-items-center xs:max-w-full lg:mx-auto p-6 bg-slate-50/60 shadow-lg">
         {/* LEFT SECTION */}
-        <section className="lg:w-4/5 xs:w-full h-full ">
+        <section className="lg:w-4/5 xs:w-full h-full  ">
           {/* Education Section */}
-          <div className="lg:p-6 md:h-[26.2rem]">
+          <motion.div
+            ref={refEducation}
+            className="lg:p-6 md:h-[26.2rem] mx-7 z-[1]"
+            animate={controlsEducation}
+            initial="hidden"
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 100,
+              },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{
+              duration: 1,
+              delay: 0.5,
+              ease: [0.4, 0.7, 0.4, 1.01],
+            }}
+          >
             <h2 className="edu">Education</h2>
             {data_resume.education.map((edu, index) => (
               <div
@@ -40,10 +76,27 @@ const Resume: React.FC = () => {
                 <p className="date">{edu.dates}</p>
               </div>
             ))}
-          </div>
-          <hr className="resume-hr xs:mb-5 md:mb-3 md:mt-0 xs:mt-7" />
+          </motion.div>
+          <hr className="resume-hr xs:mb-5 md:mb-3 md:mt-0 xs:mt-7 z-0" />
           {/* Experience Section */}
-          <div className="md:p-6">
+          <motion.div
+            className="lg:p-6 mx-7 z-[1]"
+            ref={refExperience}
+            animate={controlsExperience}
+            initial="hidden"
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 100,
+              },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{
+              duration: 1,
+              delay: isLgScreen ? 1.5 : 0.5,
+              ease: [0.4, 0.7, 0.4, 1.01],
+            }}
+          >
             <h2 className="edu">Experience</h2>
             <div>
               {data_resume.experience.map((exp, index) => (
@@ -66,14 +119,31 @@ const Resume: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* RIGHT SECTION */}
-        <section className="md:w-4/5 xs:w-full h-full  ">
+        <section className="lg:w-4/5  xs:w-full  h-full">
           {/* Courses & Certificates Section */}
-          <hr className="resume-hr xs:block lg:hidden mt-4 mb-3" />
-          <div className="lg:px-6 lg:py-2">
+          <hr className="resume-hr xs:block lg:hidden mt-4 mb-3 z-0" />
+          <motion.div
+            ref={refCourses}
+            className="lg:px-6 lg:py-2 mx-7 z-[1]"
+            animate={controlsCourses}
+            initial="hidden"
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 100,
+              },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{
+              duration: 1,
+              delay: isLgScreen ? 1.5 : 0.5,
+              ease: [0.4, 0.7, 0.4, 1.01],
+            }}
+          >
             <h2 className="edu xs:pt-4 mg:pt-0">Courses & Certificates</h2>
             <div>
               {data_resume.courses_certifications.map((cert, index) => (
@@ -89,10 +159,27 @@ const Resume: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
           {/* Language Section */}
-          <hr className="resume-hr mt-8 mb-7" />
-          <div className="flex flex-col justify-center items-center lg:p-6">
+          <hr className="resume-hr mt-8 mb-7 z-0 " />
+          <motion.div
+            ref={refLanguages}
+            className="flex flex-col justify-center items-center lg:p-6 mx-7 z-[1]"
+            animate={controlsLanguages}
+            initial="hidden"
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 100,
+              },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{
+              duration: 1,
+              delay: isLgScreen ? 2.3 : 0.5,
+              ease: [0.4, 0.7, 0.4, 1.01],
+            }}
+          >
             <h2 className="edu">Languages</h2>
             <div className="w-full lg:pt-10">
               {data_resume.languages.map((lang, index) => (
@@ -112,7 +199,7 @@ const Resume: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
       </div>
       {/* Download Button */}

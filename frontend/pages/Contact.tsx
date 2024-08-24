@@ -1,19 +1,40 @@
+"use client";
+
 import ContactForm from "../components/ContactForm";
 import React from "react";
 import { MdEmail } from "react-icons/md";
 import { IoIosPhonePortrait } from "react-icons/io";
+import useInViewAnimation from "@/components/hooks/useInView";
+import { motion } from "framer-motion";
 
 const Contact = () => {
+  const { ref, mainControls } = useInViewAnimation();
+
   return (
-    <section className="contact-section z-[2]  " id="contact">
+    <section className="contact-section z-[2]  " id="contact" ref={ref}>
       <div className="contact-container z-[2] ">
         <h1 className=" text-black  text-center -tracking-tight xs:text-2xl md:text-4xl lg:text-5xl  font-bold mt-10">
           Contact
         </h1>
-        <div className="grid sx:grid-cols-1 lg:grid-cols-2 h-full  w-full">
+        <motion.div className="grid sx:grid-cols-1 lg:grid-cols-2 h-full  w-full">
           {/* LEFT SIDE */}
-          <section className="flex w-full h-full  text-black xs:pt-5 md:pt-10">
-            <div className="w-full  h-full lg:pt-24 ">
+          <motion.div className="flex w-full h-full  text-black xs:pt-5 md:pt-10">
+            <motion.div
+              className="w-full  h-full lg:pt-24 "
+              animate={mainControls}
+              initial="hidden"
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  scale: 1,
+                },
+                visible: { opacity: 1, y: 1 },
+              }}
+              transition={{
+                duration: 1,
+                ease: "easeInOut",
+              }}
+            >
               <h2 className="text-center xs:pb-4 lg:pb-7 xs:text-base md:text-lg lg:text-2xl font-light tracking-tight">
                 You can reach me directly at:
               </h2>
@@ -41,7 +62,7 @@ const Contact = () => {
               </div>
 
               <hr className="contact-hr" />
-            </div>
+            </motion.div>
 
             {/* VERTICAL LINE */}
             <div className="flex justify-end transform xs:hidden lg:flex">
@@ -51,10 +72,26 @@ const Contact = () => {
             </div>
 
             {/* END VERTICAL LINE */}
-          </section>
+          </motion.div>
 
           {/* RIGHT SIDE */}
-          <section className="w-full h-full xs:pt-3 md:pt-5  lg:pt-20 text-black ">
+          <motion.div
+            className="w-full h-full xs:pt-3 md:pt-5  lg:pt-20 text-black "
+            animate={mainControls}
+            initial="hidden"
+            variants={{
+              hidden: {
+                opacity: 0,
+                scale: 1,
+              },
+              visible: { opacity: 1, y: 1 },
+            }}
+            transition={{
+              duration: 1,
+              delay: 1,
+              ease: "easeInOut",
+            }}
+          >
             <header className="w-full  justify-center items-center flex flex-col pb-10">
               <h2 className="font-bold tracking-tight xs:text-xl md:text-2xl lg:text-4xl mb-2">
                 Get in Touch
@@ -63,11 +100,11 @@ const Contact = () => {
                 I’m here to help with your project or answer any questions.
               </p>
             </header>
-            <div className=" lg:px-10  ">
+            <div className=" lg:px-10 xs:pb-5 md:pb-0 ">
               <ContactForm />
             </div>
-          </section>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

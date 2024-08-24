@@ -34,27 +34,34 @@ const NavBar: React.FC = ({}) => {
   }, []);
 
   useEffect(() => {
-    const sections = NAV_LINKS.map((link) => document.getElementById(link.id));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setCurrentPath(`${entry.target.id}`);
-            console.log(entry.target.id);
+    const handleScroll = () => {
+      // Get current scroll position
+      const scrollPosition = window.scrollY + window.innerHeight / 3; // Adjust as needed to trigger earlier
+
+      // Loop through each section to determine which one is in view
+      NAV_LINKS.forEach((link) => {
+        const section = document.getElementById(link.id);
+
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          // Check if the current scroll position is within this section's bounds
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            setCurrentPath(link.id); // Update the current section
           }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    sections.forEach((section) => {
-      if (section) observer.observe(section);
-    });
-
-    return () => {
-      sections.forEach((section) => {
-        if (section) observer.unobserve(section);
+        }
       });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
