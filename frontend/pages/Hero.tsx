@@ -1,7 +1,7 @@
 "use client";
 
 import AnimatedCircles from "@/components/AnimatedBG/AnimatedCircles";
-import React, { useState } from "react";
+import React from "react";
 
 const Hero = () => {
   return (

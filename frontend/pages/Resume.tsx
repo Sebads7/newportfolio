@@ -11,12 +11,12 @@ import useScreenSizes from "@/components/hooks/useScreenSizes";
 const Resume: React.FC = () => {
   const resumePDF = "/Resume-SebastianDS.pdf";
 
-  const { isMobile, isLgScreen } = useScreenSizes();
+  const { isMobile, isLarge } = useScreenSizes();
 
   const { ref, mainControls } = useInViewAnimation();
 
   // Conditional check to avoid applying animations before the state is set
-  if (isMobile === null || isLgScreen === null) {
+  if (isMobile === null || isLarge === null) {
     return null;
   }
 
@@ -55,7 +55,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLgScreen ? 0.3 : 0.5,
+              delay: isLarge ? 0.3 : 0.5,
               ease: "easeInOut",
             }}
           >
@@ -87,7 +87,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLgScreen ? 0.7 : 1,
+              delay: isLarge ? 0.7 : 1,
               ease: "easeInOut",
             }}
           >
@@ -133,7 +133,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLgScreen ? 1 : 1.5,
+              delay: isLarge ? 1 : 1.5,
               ease: "easeInOut",
             }}
           >
@@ -168,7 +168,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLgScreen ? 1.4 : 2,
+              delay: isLarge ? 1.4 : 2,
               ease: "easeInOut",
             }}
           >

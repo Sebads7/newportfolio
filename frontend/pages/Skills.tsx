@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { skills } from "@/constants";
-import { ContainerScroll } from "../components/ui/container-scroll-animation";
 import { motion } from "framer-motion";
 
 import {
@@ -45,10 +44,10 @@ const iconMap: { [key: string]: React.ElementType } = {
 const Skills = () => {
   const { ref, mainControls } = useInViewAnimation();
 
-  const { isMobile, isLgScreen } = useScreenSizes();
+  const { isMobile, isLarge } = useScreenSizes();
 
   // Conditional check to avoid applying animations before the state is set
-  if (isMobile === null || isLgScreen === null) {
+  if (isMobile === null || isLarge === null) {
     return null;
   }
 
@@ -81,7 +80,7 @@ const Skills = () => {
               x: 0,
               y: 0,
               filter: "blur(0)",
-              transform: isLgScreen
+              transform: isLarge
                 ? "perspective(700px) rotateY(-15deg) translateY(-50px) rotateX(10deg) scale(.8)"
                 : "perspective(800px) rotateY(0deg) scale(.9)  rotateX(0deg)",
             },
