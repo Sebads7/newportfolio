@@ -14,6 +14,8 @@ const Resume: React.FC = () => {
   const { isMobile, isLarge } = useScreenSizes();
 
   const { ref, mainControls } = useInViewAnimation();
+  const { ref: refLanguage, mainControls: languageControls } =
+    useInViewAnimation();
 
   // Conditional check to avoid applying animations before the state is set
   if (isMobile === null || isLarge === null) {
@@ -175,20 +177,39 @@ const Resume: React.FC = () => {
             <h2 className="edu">Languages</h2>
             <div className="w-full lg:pt-10">
               {data_resume.languages.map((lang, index) => (
-                <div
+                <motion.div
+                  ref={refLanguage}
                   key={index}
                   className="flex flex-col gap-3 pr-16 bg-[#F1F1F1] p-5 rounded-lg mt-3"
                 >
                   <p className="lg:text-lg font-semibold">
                     {lang.name} <span>{lang.level}</span>
                   </p>
-                  <div className="w-full bg-gray-300 rounded-full h-4">
-                    <div
+                  <div className=" bg-gray-300 rounded-full h-4">
+                    <motion.div
+                      initial="hidden"
+                      animate={languageControls}
+                      variants={{
+                        hidden: {
+                          width: 0,
+                        },
+                        visible: {
+                          width: `${lang.percentage}%`,
+                        },
+                      }}
+                      transition={{
+                        duration: 1,
+                        type: "spring",
+                        stiffness: 50,
+                        damping: 10,
+                        delay: 2,
+                        ease: "easeInOut",
+                      }}
                       className="bg-[#243248] h-full rounded-full"
-                      style={{ width: `${lang.percentage}%` }}
-                    ></div>
+                      // style={{ width: `${lang.percentage}%` }}
+                    ></motion.div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>

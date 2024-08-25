@@ -60,10 +60,20 @@ const Skills = () => {
         <h1 className=" page-title  text-white z-10 pb-2">My Skills</h1>
         <h3 className=" skills-sub-title">Technologies</h3>
       </div>
-      <div className=" flex justify-center items-center py-10 w-full lg:px-12">
+      <motion.div
+        className=" flex justify-center items-center py-10 w-full lg:px-12 "
+        initial={{ transform: "translateX(3-px) translateY(-3px)" }}
+        animate={{ transform: "translateX(-3px) translateY(3px)" }}
+        transition={{
+          repeat: Infinity,
+          duration: 2,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
+      >
         <motion.div
           ref={ref}
-          className="xs:rounded-tl-[5rem]  xs:rounded-br-[5rem] xs:w-full  lg:w-4/5  md:rounded-tl-[10rem]  md:rounded-b[10rem]"
+          className="custom-border-radius xs:w-full  lg:w-4/5  md:rounded-tl-[10rem]  md:rounded-b[10rem] "
           animate={mainControls}
           initial="hidden"
           variants={{
@@ -81,7 +91,7 @@ const Skills = () => {
               y: 0,
               filter: "blur(0)",
               transform: isLarge
-                ? "perspective(700px) rotateY(-15deg) translateY(-50px) rotateX(10deg) scale(.8)"
+                ? "perspective(700px) rotateY(-15deg) translateY(-50px) rotateX(10deg) scale(.8) "
                 : "perspective(800px) rotateY(0deg) scale(.9)  rotateX(0deg)",
             },
           }}
@@ -103,23 +113,8 @@ const Skills = () => {
           }}
         >
           <motion.div
-            className="flex justify-center  items-center  w-full xs:bg-gray-100 md:bg-gray-100/95    border-2  border-spacing-2  border-white    py-5  xs:rounded-tl-[5rem]  xs:rounded-br-[5rem]   md:rounded-tl-[10rem]  md:rounded-br-[10rem]
+            className="flex justify-center  items-center  w-full bg-gray-100    border-2  border-spacing-2  border-white    py-5  xs:rounded-tl-[5rem]  xs:rounded-br-[5rem]   md:rounded-tl-[10rem]  md:rounded-br-[10rem]
           shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] "
-            // animate={mainControls}
-            // initial="hidden"
-            // variants={{
-            //   hidden: {
-            //     opacity: 0,
-            //     x: isLgScreen ? 100 : 0,
-            //     y: isMobile ? 100 : 0,
-            //   },
-            //   visible: { opacity: 1, x: 0, y: 0 },
-            // }}
-            // transition={{
-            //   duration: 1,
-            //   delay: 0.5,
-            //   ease: [0.4, 0.7, 0.4, 1.01],
-            // }}
           >
             <motion.div className="  grid xs:grid-cols-3  sm:grid-cols-4  md:grid-cols-5 lg:gap-x-10 sm:px-6 xs:gap-x-4  ">
               {skills.map((skill, index) => {
@@ -163,6 +158,9 @@ const Skills = () => {
                           transition={{
                             duration: 2,
                             ease: "easeOut",
+                            type: "spring",
+                            stiffness: 40,
+                            damping: 8,
                             delay: 1.5,
                           }}
                           strokeLinecap="round"
@@ -196,7 +194,7 @@ const Skills = () => {
             </motion.div>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 };

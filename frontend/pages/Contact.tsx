@@ -12,7 +12,18 @@ const Contact = () => {
 
   return (
     <section className="contact-section z-[2] bg-black " id="contact" ref={ref}>
-      <div className="contact-container z-[2] ">
+      <motion.div
+        className="contact-container z-[2] "
+        initial={{ transform: "translateX(1px) translateY(-2px)" }}
+        animate={{ transform: "translateX(-1px) translateY(2px)" }}
+        transition={{
+          repeat: Infinity,
+
+          duration: 5,
+          repeatType: "reverse",
+          ease: [1, 0, 0, 1],
+        }}
+      >
         <h1 className=" text-black  text-center -tracking-tight xs:text-2xl md:text-4xl lg:text-5xl  font-bold mt-10">
           Contact
         </h1>
@@ -105,7 +116,7 @@ const Contact = () => {
             </div>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

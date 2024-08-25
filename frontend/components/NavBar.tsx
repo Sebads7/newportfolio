@@ -143,7 +143,7 @@ const NavBar: React.FC = ({}) => {
       </div>
       {/* NAV AND TYPEWRITER */}
       <div
-        className={`justify-center items-center flex  w-full md:h-20  transition-all duration-100 ease-in-out  bg-black/70   lg:bg-black/50 ${isSticky ? ` !bg-black fixed top-0` : ""} 
+        className={`justify-center items-center flex  w-full md:h-20  transition-all duration-100 ease-in-out  bg-black/70   lg:bg-black/50 ${isSticky ? ` !bg-black fixed top-0 ` : ""} 
         }`}
       >
         {/* HOVER EFFECT */}
@@ -167,6 +167,7 @@ const NavBar: React.FC = ({}) => {
             </h2>
           </div>
           {/* NAVIGATION */}
+
           <nav className=" justify-center items-center col-span-2  text-white xs:hidden md:flex ">
             <ul className="flex items-center xs:gap-1 sm:gap-7  md:gap-3 xs:text-base md:text-lg ">
               {NAV_LINKS.map((link) => (
@@ -205,10 +206,10 @@ const NavBar: React.FC = ({}) => {
 
       {/* MOBILE NAV */}
       {isMobile && (
-        <div className={`fixed `}>
+        <div className={`fixed h-[8rem] `}>
           {/* Mobile Menu Button */}
           <motion.div
-            className={`mobile-button mt-4 flex justify-center items-center ml-4  w-[4rem] h-full py-3  mr-2    `}
+            className={`mobile-button   flex justify-center items-center ml-4  w-[4rem]  py-[10px] mt-12  mr-2    `}
             onClick={handleMenuToggle}
           >
             <motion.button
@@ -244,7 +245,7 @@ const NavBar: React.FC = ({}) => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, delay: 0.1, ease: "easeInOut" }}
             ref={menuRef}
-            className={`l   py-5 mt-16   ${isMobileMenuOpen ? "flex" : "opacity-100"}`}
+            className={`   py-5 mt-28   ${isMobileMenuOpen ? "flex " : "opacity-100"}`}
           >
             <ul className="fixed flex flex-col justify-center  rounded-r-[3rem] border-[#rgba(8,112,184)]  py-16 bg-black/95 shadow-[5px_1px_5px_1px_rgba(8,112,184)]">
               {NAV_LINKS.map((link) => (

@@ -11,6 +11,9 @@ const Projects = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isScaled, setIsScaled] = useState(false);
 
+  const isFirstIndex = activeIndex === 0;
+  const isInRange = activeIndex >= 1 && activeIndex <= PROJECTS_DATA.length - 1;
+
   const handleToggleScale = React.useCallback(() => {
     setIsScaled((prev) => !prev);
   }, []);
@@ -72,7 +75,7 @@ const Projects = () => {
               initial="hidden"
               variants={{
                 hidden: {
-                  opacity: 1,
+                  opacity: 0,
                   scale: 0.5,
                 },
                 visible: { opacity: 1, scale: 1 },
@@ -122,8 +125,8 @@ const Projects = () => {
             {PROJECTS_DATA.map((project, index) => (
               <div
                 key={index}
-                className={`project-card  xs:h-[40rem] xs:translate-x-[-18px]  xs:-translate-y-5  sm:-translate-y-0 xs:w-full sm:w-[65vw] lg:w-[50rem]  absolute  
-                  ${isScaled && activeIndex === 0 ? "xs:translate-x-[3.5px] " : "xs:translate-x-[-30.5px]"} 
+                className={`project-card  xs:h-[40rem]   xs:-translate-y-5  sm:-translate-y-0 xs:w-full sm:w-[65vw] lg:w-[50rem]  absolute  
+                  ${isScaled && isFirstIndex ? "xs:translate-x-[1px] " : isScaled && isInRange ? "xs:translate-x-[-27px] sm:translate-x-0 " : "xs:translate-x-[-10px] sm:translate-x-0"} 
                   ${isScaled && index === activeIndex ? "xs:scale-[.95] xs:translate-y-5  " : "xs:scale-75 "}  
                   ${index === activeIndex ? "z-20 project-card-shadow   sm:scale-90 sm:hover:translate-y-0  sm:translate-y-0 sm:hover:scale-100 md:scale-100 " : "z-10  sm:scale-[.8] md:scale-90 xs:scale-[.7]   shadow-lg"} `}
                 onClick={handleToggleScale}
