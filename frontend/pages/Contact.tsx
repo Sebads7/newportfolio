@@ -11,7 +11,7 @@ const Contact = () => {
   const { ref, mainControls } = useInViewAnimation();
 
   return (
-    <section className="contact-section z-[2]  " id="contact" ref={ref}>
+    <section className="contact-section z-[2] bg-black " id="contact" ref={ref}>
       <div className="contact-container z-[2] ">
         <h1 className=" text-black  text-center -tracking-tight xs:text-2xl md:text-4xl lg:text-5xl  font-bold mt-10">
           Contact

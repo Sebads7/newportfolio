@@ -57,7 +57,6 @@ const Skills = () => {
       className="flex flex-col w-full h-full z-10 py-16 bg-black"
       id="skills"
     >
-      {/* TITLE */}
       <div className="flex justify-center items-center flex-col h-full  w-auto mx-auto py-10 ">
         <h1 className=" page-title  text-white z-10 pb-2">My Skills</h1>
         <h3 className=" skills-sub-title">Technologies</h3>

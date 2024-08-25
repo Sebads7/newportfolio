@@ -149,6 +149,18 @@ const config: Config = {
             transform: "scale(1)",
           },
         },
+        "square-spin": {
+          "0%": {
+            transform: "translateY(0) rotate(0deg)",
+            opacity: "1",
+            borderRadius: "0",
+          },
+          "100%": {
+            transform: "translateY(-1000px) rotate(720deg)",
+            opacity: "0",
+            borderRadius: "50%",
+          },
+        },
       },
       animation: {
         wiggle: "wiggle 1s ease-in-out infinite",
@@ -159,6 +171,7 @@ const config: Config = {
         "zoom-in": "zoom-in 1s  ease-out forwards",
         "blur-in": "blur-in 1s  ease-out forwards",
         "blur-zoom-in": "blur-zoom-in 1s  ease-out forwards",
+        "square-spin": "square-spin 15s linear infinite",
       },
     },
   },

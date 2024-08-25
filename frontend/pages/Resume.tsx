@@ -13,14 +13,7 @@ const Resume: React.FC = () => {
 
   const { isMobile, isLgScreen } = useScreenSizes();
 
-  const { ref: refEducation, mainControls: controlsEducation } =
-    useInViewAnimation();
-  const { ref: refExperience, mainControls: controlsExperience } =
-    useInViewAnimation();
-  const { ref: refLanguages, mainControls: controlsLanguages } =
-    useInViewAnimation();
-  const { ref: refCourses, mainControls: controlsCourses } =
-    useInViewAnimation();
+  const { ref, mainControls } = useInViewAnimation();
 
   // Conditional check to avoid applying animations before the state is set
   if (isMobile === null || isLgScreen === null) {
@@ -42,26 +35,28 @@ const Resume: React.FC = () => {
         </h1>
       </div>
 
-      <div className="container  grid lg:grid-cols-2 place-items-center xs:max-w-full lg:mx-auto p-6 bg-slate-50/60 shadow-lg">
+      <div
+        className="container  grid lg:grid-cols-2 place-items-center xs:max-w-full lg:mx-auto p-6 bg-slate-50/60 shadow-lg"
+        ref={ref}
+      >
         {/* LEFT SECTION */}
         <section className="lg:w-4/5 xs:w-full h-full  ">
           {/* Education Section */}
           <motion.div
-            ref={refEducation}
             className="lg:p-6 md:h-[26.2rem] mx-7 z-[1]"
-            animate={controlsEducation}
+            animate={mainControls}
             initial="hidden"
             variants={{
               hidden: {
                 opacity: 0,
-                y: 100,
+                scale: 1,
               },
-              visible: { opacity: 1, y: 0 },
+              visible: { opacity: 1, y: 1 },
             }}
             transition={{
               duration: 1,
-              delay: 0.5,
-              ease: [0.4, 0.7, 0.4, 1.01],
+              delay: isLgScreen ? 0.3 : 0.5,
+              ease: "easeInOut",
             }}
           >
             <h2 className="edu">Education</h2>
@@ -81,20 +76,19 @@ const Resume: React.FC = () => {
           {/* Experience Section */}
           <motion.div
             className="lg:p-6 mx-7 z-[1]"
-            ref={refExperience}
-            animate={controlsExperience}
+            animate={mainControls}
             initial="hidden"
             variants={{
               hidden: {
                 opacity: 0,
-                y: 100,
+                scale: 1,
               },
-              visible: { opacity: 1, y: 0 },
+              visible: { opacity: 1, y: 1 },
             }}
             transition={{
               duration: 1,
-              delay: isLgScreen ? 1.5 : 0.5,
-              ease: [0.4, 0.7, 0.4, 1.01],
+              delay: isLgScreen ? 0.7 : 1,
+              ease: "easeInOut",
             }}
           >
             <h2 className="edu">Experience</h2>
@@ -127,21 +121,20 @@ const Resume: React.FC = () => {
           {/* Courses & Certificates Section */}
           <hr className="resume-hr xs:block lg:hidden mt-4 mb-3 z-0" />
           <motion.div
-            ref={refCourses}
             className="lg:px-6 lg:py-2 mx-7 z-[1]"
-            animate={controlsCourses}
+            animate={mainControls}
             initial="hidden"
             variants={{
               hidden: {
                 opacity: 0,
-                y: 100,
+                scale: 1,
               },
-              visible: { opacity: 1, y: 0 },
+              visible: { opacity: 1, y: 1 },
             }}
             transition={{
               duration: 1,
-              delay: isLgScreen ? 1.5 : 0.5,
-              ease: [0.4, 0.7, 0.4, 1.01],
+              delay: isLgScreen ? 1 : 1.5,
+              ease: "easeInOut",
             }}
           >
             <h2 className="edu xs:pt-4 mg:pt-0">Courses & Certificates</h2>
@@ -163,21 +156,20 @@ const Resume: React.FC = () => {
           {/* Language Section */}
           <hr className="resume-hr mt-8 mb-7 z-0 " />
           <motion.div
-            ref={refLanguages}
             className="flex flex-col justify-center items-center lg:p-6 mx-7 z-[1]"
-            animate={controlsLanguages}
+            animate={mainControls}
             initial="hidden"
             variants={{
               hidden: {
                 opacity: 0,
-                y: 100,
+                scale: 1,
               },
-              visible: { opacity: 1, y: 0 },
+              visible: { opacity: 1, y: 1 },
             }}
             transition={{
               duration: 1,
-              delay: isLgScreen ? 2.3 : 0.5,
-              ease: [0.4, 0.7, 0.4, 1.01],
+              delay: isLgScreen ? 1.4 : 2,
+              ease: "easeInOut",
             }}
           >
             <h2 className="edu">Languages</h2>

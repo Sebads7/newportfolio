@@ -9,13 +9,18 @@ import useScreenSizes from "@/components/hooks/useScreenSizes";
 
 const Projects = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [isScaled, setIsScaled] = useState(false);
 
-  const { isMobile, isLgScreen, isXsScreen } = useScreenSizes();
+  const handleToggleScale = React.useCallback(() => {
+    setIsScaled((prev) => !prev);
+  }, []);
+
+  const { IsTablet, isMobile, isLarge } = useScreenSizes();
 
   const { ref, mainControls } = useInViewAnimation();
 
   // Conditional check to avoid applying animations before the state is set
-  if (isMobile === null || isLgScreen === null || isXsScreen === null) {
+  if (IsTablet === null || isLarge === null || isMobile === null) {
     return null;
   }
 
@@ -51,71 +56,62 @@ const Projects = () => {
           >
             My Projects
           </h1>
-          <p className="md:text-lg text-gray-600">
+          <p className="md:text-lg xs:mb-5 sm:mb-0 text-gray-600">
             Explore the projects I&apos;ve worked on, including details on the
             technologies used and links to live demos and code repositories.
           </p>
         </motion.div>
 
         {/* PROJECTS INFO */}
-        <div className="relative w-full h-[50rem]  ">
+        <div className="relative flex justify-center flex-col w-full xs:h-[42rem] sm:h-[50rem] ">
           {/* Buttons */}
-          <motion.div
-            className=" flex-wrap  sm:justify-center gap-4 mt-10 mx-auto xs:px-5  md:px-14 flex  "
-            animate={mainControls}
-            initial="hidden"
-            variants={{
-              hidden: {
-                opacity: 0,
-                scale: 0.5,
-              },
-              visible: { opacity: 1, scale: 1 },
-            }}
-            transition={{
-              duration: 1,
-              delay: 0.5,
-              ease: [0.4, 0.7, 0.4, 1.01],
-            }}
-          >
-            {PROJECTS_DATA.filter((_, index) =>
-              isXsScreen ? index === activeIndex : true,
-            ).map((project, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`py-2 
-                  px-4 
-                 
-                  xs:text-base
-                  xs:w-full      
-                  sm:w-auto
-                  xs:bg-[#2c4253]
-                 
-                  sm:rounded-md 
-                  text-white 
-                  project-button-fx   ${
-                    activeIndex === index
-                      ? "sm:bg-[#2b3963] cursor-default"
-                      : "sm:bg-[#B4B4B8] md:hover:bg-[#a5a5b4] "
-                  }`}
-              >
-                {project.title}
-              </button>
-            ))}
-          </motion.div>
+          {IsTablet && (
+            <motion.div
+              className=" flex-wrap  sm:justify-center gap-4 mt-10 mx-auto xs:px-5  md:px-14 flex  z-10"
+              animate={mainControls}
+              initial="hidden"
+              variants={{
+                hidden: {
+                  opacity: 1,
+                  scale: 0.5,
+                },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              transition={{
+                duration: 1,
+                delay: 0.5,
+                ease: [0.4, 0.7, 0.4, 1.01],
+              }}
+            >
+              {PROJECTS_DATA.map((project, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`py-2 px-4 xs:text-base xs:w-full sm:w-auto sm:rounded-md 
+        text-white 
+        project-button-fx   ${
+          activeIndex === index
+            ? "bg-[#2b3963] cursor-default"
+            : "bg-[#B4B4B8] hover:bg-[#acacbd] "
+        }`}
+                >
+                  {project.title}
+                </button>
+              ))}
+            </motion.div>
+          )}
 
           {/* Projects */}
           <motion.div
-            className="relative md:pt-10 lg:pt-16  flex flex-row justify-center items-center h-full  xs:-space-y-36 md:space-x-48 "
+            className="relative md:pt-10 lg:pt-16  flex flex-row justify-center items-center  h-full   md:space-x-48 xs:space-x-14 sm:space-x-28 -translate-x-2  "
             animate={mainControls}
             initial="hidden"
             variants={{
               hidden: {
                 opacity: 0,
-                x: isLgScreen ? 100 : 0,
-                y: isMobile ? 100 : 0,
+                y: 100,
               },
-              visible: { opacity: 1, x: 0, y: 0 },
+              visible: { opacity: 1, y: 0 },
             }}
             transition={{
               duration: 1,
@@ -123,59 +119,14 @@ const Projects = () => {
               ease: [0.4, 0.7, 0.4, 1.01],
             }}
           >
-            {isXsScreen && (
-              <div
-                className="  absolute space-x-52 px-2 rounded-full  
-               py-2   z-50 top-64   "
-              >
-                <button
-                  className="duration-200 right-0 -rotate-90 p-2  active:scale-100 bg-white rounded-full "
-                  title="Go Back"
-                  onClick={showPrevItem}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="50px"
-                    height="50px"
-                    viewBox="0 0 24 24"
-                    className="stroke-[#447aa3] rotate-90"
-                  >
-                    <path
-                      stroke-linejoin="round"
-                      stroke-linecap="round"
-                      stroke-width="1.5"
-                      d="M11 6L5 12M5 12L11 18M5 12H19"
-                    ></path>
-                  </svg>
-                </button>
-
-                <button
-                  className="duration-200 -rotate-90 p-2  active:scale-100 bg-white rounded-full "
-                  title="Go Back"
-                  onClick={showNextItem}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="50px"
-                    height="50px"
-                    viewBox="0 0 24 24"
-                    className="stroke-[#447aa3] -rotate-90"
-                  >
-                    <path
-                      stroke-linejoin="round"
-                      stroke-linecap="round"
-                      stroke-width="1.5"
-                      d="M11 6L5 12M5 12L11 18M5 12H19"
-                    ></path>
-                  </svg>
-                </button>
-              </div>
-            )}
-
             {PROJECTS_DATA.map((project, index) => (
               <div
                 key={index}
-                className={`project-card   xs:w-11/12 sm:w-[65vw] lg:w-[50rem] h-[40rem]  absolute   md:-translate-x-10   ${index === activeIndex ? "z-20 project-card-shadow " : "z-10 scale-90 shadow-lg"} `}
+                className={`project-card  xs:h-[40rem] xs:translate-x-[-18px]  xs:-translate-y-5  sm:-translate-y-0 xs:w-full sm:w-[65vw] lg:w-[50rem]  absolute  
+                  ${isScaled && activeIndex === 0 ? "xs:translate-x-[3.5px] " : "xs:translate-x-[-30.5px]"} 
+                  ${isScaled && index === activeIndex ? "xs:scale-[.95] xs:translate-y-5  " : "xs:scale-75 "}  
+                  ${index === activeIndex ? "z-20 project-card-shadow   sm:scale-90 sm:hover:translate-y-0  sm:translate-y-0 sm:hover:scale-100 md:scale-100 " : "z-10  sm:scale-[.8] md:scale-90 xs:scale-[.7]   shadow-lg"} `}
+                onClick={handleToggleScale}
               >
                 <Image
                   src={project.imageUrl}
@@ -193,8 +144,6 @@ const Projects = () => {
                   text-center 
                   font-semibold 
                   mb-5 
-                  xs:text-transparent
-                  sm:text-black
                   h-[3rem]"
                   >
                     {project.title}
@@ -239,7 +188,7 @@ const Projects = () => {
                         href={project.repoLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-500 hover:underline"
+                        className=" hover:underline text-blue-500"
                       >
                         View Code
                       </a>
@@ -249,6 +198,58 @@ const Projects = () => {
               </div>
             ))}
           </motion.div>
+
+          {isMobile && (
+            <div className="  -translate-y-14 px-2 rounded-full  mx-auto transition-all duration-300 ease-in-out py-2  bg-black/50 border scale-[0.7] hover:scale-[0.9]  ">
+              <div className="flex justify-center items-center space-x-10 ">
+                <button
+                  className="duration-200 right-0 -rotate-90 p-2  active:scale-100 bg-white/50 rounded-full "
+                  title="Go Back"
+                  onClick={showPrevItem}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 24 24"
+                    className="stroke-white    rotate-90"
+                  >
+                    <path
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      d="M11 6L5 12M5 12L11 18M5 12H19"
+                    ></path>
+                  </svg>
+                </button>
+
+                <p className="text-white text-lg font-bold px-6 py-2 rounded-md">
+                  {activeIndex + 1} of {PROJECTS_DATA.length}
+                </p>
+
+                <button
+                  className="duration-200 -rotate-90 p-2  active:scale-100 bg-white/50 rounded-full "
+                  title="Go Back"
+                  onClick={showNextItem}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="50px"
+                    height="50px"
+                    viewBox="0 0 24 24"
+                    className="stroke-white -rotate-90"
+                  >
+                    <path
+                      stroke-linejoin="round"
+                      stroke-linecap="round"
+                      stroke-width="2"
+                      d="M11 6L5 12M5 12L11 18M5 12H19"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
