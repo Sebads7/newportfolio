@@ -9,7 +9,7 @@ import useScreenSizes from "@/components/hooks/useScreenSizes";
 // Define TypeScript interfaces for the data if not already defined
 
 const Resume: React.FC = () => {
-  const resumePDF = "/Resume-SebastianDS.pdf";
+  const resumePDF = "/SebastianDS-Resume.pdf";
 
   const { isMobile, isLarge } = useScreenSizes();
 
