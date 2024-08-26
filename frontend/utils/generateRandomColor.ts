@@ -1,5 +1,5 @@
 // Define a list of colors, including predefined ones
-const predefinedColors = ["#FAF9F9", "#F8F6F4", "#F0F0F0", "#F7F6F2"];
+const predefinedColors = ["#FFFFFF", "#F8F6F4", "#FAFAF6", "#FFFFFF"];
 
 // Function to generate a random color from predefined colors
 export const generateRandomColor = (): string => {

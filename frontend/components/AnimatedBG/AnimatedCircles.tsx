@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import ListItem from "./ListItem";
 
 // Generate list items with different delays and sizes
 const generateListItems = () => {
-  const numberOfItems = 20;
+  const numberOfItems = 25;
   const delays = [
     "1s",
     "5s",
@@ -85,7 +85,7 @@ const AnimatedSquares: React.FC = () => {
   const listItems = generateListItems();
 
   return (
-    <ul className="fixed inset-0 m-0 p-0 bg-[#07070e] overflow-hidden ">
+    <ul className="fixed inset-0 m-0 p-0  overflow-hidden  ">
       {listItems.map((styles, index) => (
         <ListItem key={index} styles={styles} />
       ))}

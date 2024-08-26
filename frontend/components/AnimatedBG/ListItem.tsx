@@ -16,7 +16,7 @@ const ListItem: React.FC<ListItemProps> = React.memo(
     const colors = generateRandomColor();
     return (
       <li
-        className="absolute block list-none bg-[rgba(255,255,255,0.2)] animate-square-spin !rounded-full   "
+        className="absolute block list-none bg-[#ffffff] shadow-2xl  shadow-white  animate-square-spin !rounded-full   "
         style={{
           left: styles.left,
           width: styles.width,

@@ -5,10 +5,11 @@ import { CiMail } from "react-icons/ci";
 import { MdPhoneIphone } from "react-icons/md";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { NAV_LINKS } from "../constants/index";
-import Link from "next/link";
+
 import { Typewriter } from "react-simple-typewriter";
 import useScreenSizes from "./hooks/useScreenSizes";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 const NavBar: React.FC = ({}) => {
   const [activeIndex, setActiveIndex] = useState<string | null>(null);
@@ -143,7 +144,7 @@ const NavBar: React.FC = ({}) => {
       </div>
       {/* NAV AND TYPEWRITER */}
       <div
-        className={`justify-center items-center flex  w-full md:h-20  transition-all duration-100 ease-in-out  bg-black/70   lg:bg-black/50 ${isSticky ? ` !bg-black fixed top-0 ` : ""} 
+        className={`justify-center items-center flex  w-full md:h-20  transition-all duration-100 ease-in-out    section-bg ${isSticky ? ` !bg-black fixed top-0 ` : ""} 
         }`}
       >
         {/* HOVER EFFECT */}
@@ -176,20 +177,19 @@ const NavBar: React.FC = ({}) => {
                   className="relative w-full h-full cursor-pointer xs:pb-3 md:pb-0"
                 >
                   <Link
-                    href={link.to}
+                    to={link.id}
                     className={`flex relative xs:px-2  md:px-5 xs:py-[2px] md:py-1 rounded-lg ${
                       currentPath === link.id
                         ? "sm:border-[.1px] xs:text-[#2b3963]  sm:bg-blue-50 lg:hover:scale-[1.05] transition-all ease-in-out text-black"
                         : ""
                     }`}
-                    onClick={() => setCurrentPath(link.to)}
                     onMouseEnter={() => setActiveIndex(link.key)}
                     onMouseLeave={() => setActiveIndex(null)}
                   >
                     {link.label}
                     <div
                       className={`absolute -bottom-0 left-1/2 transform -translate-x-1/2 h-[3px] rounded-sm transition-all duration-300 delay-75 ease-in-out xs:hidden ${currentPath !== link.id ? "lg:block" : ""}  ${
-                        currentPath === link.to
+                        currentPath === link.id
                           ? "w-0 bg-transparent"
                           : activeIndex === link.id
                             ? "w-3/5 bg-blue-200"
@@ -251,13 +251,12 @@ const NavBar: React.FC = ({}) => {
               {NAV_LINKS.map((link) => (
                 <li key={link.key} className="py-2">
                   <Link
-                    href={link.to}
+                    to={link.id}
                     className={`flex justify-center space-y-6  relative py-2 px-3   ${
                       currentPath === link.id
                         ? " !bg-white !text-black    transition-all ease-in-out "
                         : "text-white"
                     }`}
-                    onClick={() => setCurrentPath(link.to)}
                     onMouseEnter={() => setActiveIndex(link.key)}
                     onMouseLeave={() => setActiveIndex(null)}
                   >

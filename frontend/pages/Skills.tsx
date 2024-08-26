@@ -126,7 +126,7 @@ const Skills = () => {
                   strokeDasharray - (strokeDasharray * skill.percentage) / 100; // Calculate based on percentage
 
                 return (
-                  <motion.div key={skill.skillName} className=" text-black ">
+                  <motion.div key={skill.skillName} className="  ">
                     <motion.div className="flex flex-col justify-center items-center xs:pt-2 lg:pt-5">
                       {/* BACKGROUND  CIRCLE */}
                       <motion.svg
@@ -142,7 +142,9 @@ const Skills = () => {
                           fill="transparent"
                         ></circle>
                         <motion.circle
-                          className={` text-[#3a6077] -rotate-90  origin-center stroke-current `}
+                          className={`text-[#395376] 
+                           
+                            -rotate-90  origin-center stroke-current `}
                           strokeWidth="10"
                           cx="50"
                           cy="50"
@@ -159,7 +161,7 @@ const Skills = () => {
                             duration: 2,
                             ease: "easeOut",
                             type: "spring",
-                            stiffness: 40,
+                            stiffness: 30,
                             damping: 8,
                             delay: 1.5,
                           }}
@@ -171,7 +173,7 @@ const Skills = () => {
                           y="50%"
                           dominantBaseline="middle"
                           textAnchor="middle"
-                          className="font-bold fill-current xs:text-sm md:text-base  lg:text-lg text-[#304463]"
+                          className="font-bold fill-current xs:text-sm md:text-base  lg:text-lg "
                         >
                           {skill.percentage}%
                         </text>

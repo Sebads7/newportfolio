@@ -51,7 +51,7 @@ const Projects = () => {
       md:p-6 
       z-20 "
       >
-        <motion.div className="text-center xs:px-5 md:px-0 ">
+        <div className="text-center xs:px-5 md:px-0 ">
           <h1
             className=" page-title
           xs:mb-5 
@@ -59,54 +59,55 @@ const Projects = () => {
           >
             My Projects
           </h1>
-          <p className="md:text-lg xs:mb-5 sm:mb-0 text-gray-600">
+          <motion.p
+            className="md:text-lg xs:mb-5 sm:mb-0 text-gray-600"
+            animate={mainControls}
+            initial="hidden"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 },
+            }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
+          >
             Explore the projects I&apos;ve worked on, including details on the
             technologies used and links to live demos and code repositories.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* PROJECTS INFO */}
         <div className="relative flex justify-center flex-col w-full xs:h-[42rem] sm:h-[50rem] ">
           {/* Buttons */}
-          {IsTablet && (
-            <motion.div
-              className=" flex-wrap  sm:justify-center gap-4 mt-10 mx-auto xs:px-5  md:px-14 flex  z-10"
-              animate={mainControls}
-              initial="hidden"
-              variants={{
-                hidden: {
-                  opacity: 0,
-                  scale: 0.5,
-                },
-                visible: { opacity: 1, scale: 1 },
-              }}
-              transition={{
-                duration: 1,
-                delay: 0.5,
-                ease: [0.4, 0.7, 0.4, 1.01],
-              }}
-            >
-              {PROJECTS_DATA.map((project, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`py-2 px-4 xs:text-base xs:w-full sm:w-auto sm:rounded-md 
+
+          <motion.div
+            className="xs:hidden sm:flex flex-wrap  sm:justify-center gap-4 mt-10 mx-auto xs:px-5  md:px-14  z-10"
+            animate={mainControls}
+            initial="hidden"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 },
+            }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
+          >
+            {PROJECTS_DATA.map((project, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`py-2 px-4 xs:text-base xs:w-full sm:w-auto sm:rounded-md 
         text-white 
         project-button-fx   ${
           activeIndex === index
-            ? "bg-[#2b3963] cursor-default"
-            : "bg-[#B4B4B8] hover:bg-[#acacbd] "
+            ? "bg-[#395376] cursor-default"
+            : "bg-[#B4B4B8] hover:bg-[#6c7892] "
         }`}
-                >
-                  {project.title}
-                </button>
-              ))}
-            </motion.div>
-          )}
+              >
+                {project.title}
+              </button>
+            ))}
+          </motion.div>
 
           {/* Projects */}
           <motion.div
-            className="relative md:pt-10 lg:pt-16  flex flex-row justify-center items-center  h-full   md:space-x-48 xs:space-x-14 sm:space-x-28 -translate-x-2  "
+            className="relative md:pt-10 lg:pt-16   flex flex-row justify-center items-center  h-full   md:space-x-48 xs:space-x-14 sm:space-x-28 -translate-x-2  "
             animate={mainControls}
             initial="hidden"
             variants={{
@@ -127,7 +128,7 @@ const Projects = () => {
                 key={index}
                 className={`project-card  xs:h-[40rem]   xs:-translate-y-5  sm:-translate-y-0 xs:w-full sm:w-[65vw] lg:w-[50rem]  absolute  
                   ${isScaled && isFirstIndex ? "xs:translate-x-[1px] " : isScaled && isInRange ? "xs:translate-x-[-27px] sm:translate-x-0 " : "xs:translate-x-[-10px] sm:translate-x-0"} 
-                  ${isScaled && index === activeIndex ? "xs:scale-[.95] xs:translate-y-5  " : "xs:scale-75 "}  
+                  ${isScaled && index === activeIndex ? "xs:scale-[.95] xs:translate-y-5 blur-none " : "xs:scale-75   xs:blur-[2px] sm:blur-none "}  
                   ${index === activeIndex ? "z-20 project-card-shadow   sm:scale-90 sm:hover:translate-y-0  sm:translate-y-0 sm:hover:scale-100 md:scale-100 " : "z-10  sm:scale-[.8] md:scale-90 xs:scale-[.7]   shadow-lg"} `}
                 onClick={handleToggleScale}
               >
@@ -203,10 +204,12 @@ const Projects = () => {
           </motion.div>
 
           {isMobile && (
-            <div className="  -translate-y-14 px-2 rounded-full  mx-auto transition-all duration-300 ease-in-out py-2  bg-black/50 border scale-[0.7] hover:scale-[0.9]  ">
-              <div className="flex justify-center items-center space-x-10 ">
+            <motion.div
+              className={`-translate-y-20 px-2 rounded-full mx-auto transition-all duration-300 ease-in-out py-2 bg-black/50 shadow-lg border scale-[.6] hover:scale-[.7]  ${!isScaled ? "z-50" : "z-0"}`}
+            >
+              <div className="flex justify-center items-center space-x-10">
                 <button
-                  className="duration-200 right-0 -rotate-90 p-2  active:scale-100 bg-white/50 rounded-full "
+                  className=" right-0 -rotate-90 p-2 active:scale-110"
                   title="Go Back"
                   onClick={showPrevItem}
                 >
@@ -215,7 +218,7 @@ const Projects = () => {
                     width="50px"
                     height="50px"
                     viewBox="0 0 24 24"
-                    className="stroke-white    rotate-90"
+                    className="stroke-white rotate-90"
                   >
                     <path
                       stroke-linejoin="round"
@@ -231,7 +234,7 @@ const Projects = () => {
                 </p>
 
                 <button
-                  className="duration-200 -rotate-90 p-2  active:scale-100 bg-white/50 rounded-full "
+                  className=" -rotate-90 p-2 active:scale-110 "
                   title="Go Back"
                   onClick={showNextItem}
                 >
@@ -251,7 +254,7 @@ const Projects = () => {
                   </svg>
                 </button>
               </div>
-            </div>
+            </motion.div>
           )}
         </div>
       </div>

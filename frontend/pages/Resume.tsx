@@ -89,7 +89,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLarge ? 0.7 : 1,
+              delay: isLarge ? 0.7 : 0.9,
               ease: "easeInOut",
             }}
           >
@@ -135,7 +135,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLarge ? 1 : 1.5,
+              delay: isLarge ? 1 : 1.2,
               ease: "easeInOut",
             }}
           >
@@ -202,10 +202,10 @@ const Resume: React.FC = () => {
                         type: "spring",
                         stiffness: 50,
                         damping: 10,
-                        delay: 2,
+                        delay: isLarge ? 1 : 0.5,
                         ease: "easeInOut",
                       }}
-                      className="bg-[#243248] h-full rounded-full"
+                      className="bg-[#395376] h-full rounded-full"
                       // style={{ width: `${lang.percentage}%` }}
                     ></motion.div>
                   </div>
@@ -220,7 +220,7 @@ const Resume: React.FC = () => {
         <a
           href={resumePDF}
           download="Sebastian-Resume.pdf"
-          className="bg-[#2b3963] hover:shadow-[0px_0px_4px_4px_rgba(0,0,0,0.1)] text-white py-2 px-4 rounded hover:bg-[#44599b]"
+          className="bg-[#395376] hover:shadow-[0px_0px_4px_4px_rgba(0,0,0,0.1)] text-white py-2 px-4 rounded hover:bg-[#5b7293]"
         >
           Download Resume
         </a>
