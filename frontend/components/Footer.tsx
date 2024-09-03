@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="">
-          <p className="text-gray-800  flex flex-col text-center  ">
+          <p className="text-gray-800  flex flex-col text-center xs:pt-4 lg:pt-0 ">
             &copy; {new Date().getFullYear()} Designed and Developed by
             <span>Sebastian Di Salvatore. All Rights Reserved.</span>
           </p>

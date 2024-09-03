@@ -39,7 +39,7 @@ const Projects = () => {
 
   return (
     <section
-      className="flex py-24   w-full h-full relative    !bg-white !dark:bg-dot-white/[0.2]  !bg-dot-black/[0.2] "
+      className="flex py-24   w-full sm:h-[150vh] relative    !bg-white !dark:bg-dot-white/[0.2]  !bg-dot-black/[0.2] "
       id="projects"
       ref={ref}
     >
@@ -107,7 +107,7 @@ const Projects = () => {
 
           {/* Projects */}
           <motion.div
-            className="relative md:pt-10 lg:pt-16   flex flex-row justify-center items-center  h-full   md:space-x-48 xs:space-x-14 sm:space-x-28 -translate-x-2  "
+            className="relative  sm:pt-28 lg:pt-16   flex flex-row justify-center items-center  h-full   md:space-x-48 xs:space-x-14 sm:space-x-28 -translate-x-2  "
             animate={mainControls}
             initial="hidden"
             variants={{
@@ -128,7 +128,7 @@ const Projects = () => {
                 key={index}
                 className={`project-card  xs:h-[40rem]   xs:-translate-y-5  sm:-translate-y-0 xs:w-full sm:w-[65vw] lg:w-[50rem]  absolute  
                   ${isScaled && isFirstIndex ? "xs:translate-x-[1px] " : isScaled && isInRange ? "xs:translate-x-[-27px] sm:translate-x-0 " : "xs:translate-x-[-10px] sm:translate-x-0"} 
-                  ${isScaled && index === activeIndex ? "xs:scale-[.95] xs:translate-y-5 blur-none " : "xs:scale-75   xs:blur-[2px] sm:blur-none "}  
+                  ${isScaled && index === activeIndex ? "xs:scale-[.95] xs:translate-y-5 blur-none " : "xs:scale-75   xs:blur-[0.4px] sm:blur-none "}  
                   ${index === activeIndex ? "z-20 project-card-shadow   sm:scale-90 sm:hover:translate-y-0  sm:translate-y-0 sm:hover:scale-100 md:scale-100 " : "z-10  sm:scale-[.8] md:scale-90 xs:scale-[.7]   shadow-lg"} `}
                 onClick={handleToggleScale}
               >

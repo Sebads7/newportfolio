@@ -30,6 +30,7 @@ const Resume: React.FC = () => {
        !dark:bg-dot-white/[0.2] 
        !bg-dot-black/[0.2] "
       id="resume"
+      ref={ref}
     >
       <div>
         <h1 className="xs:text-3xl md:text-4xl lg:text-5xl text-center font-bold mb-10">
@@ -37,10 +38,7 @@ const Resume: React.FC = () => {
         </h1>
       </div>
 
-      <div
-        className="container  grid lg:grid-cols-2 place-items-center xs:max-w-full lg:mx-auto p-6 bg-slate-50/60 shadow-lg"
-        ref={ref}
-      >
+      <div className="container  grid lg:grid-cols-2 place-items-center xs:max-w-full lg:mx-auto p-6 bg-slate-50/60 shadow-lg">
         {/* LEFT SECTION */}
         <section className="lg:w-4/5 xs:w-full h-full  ">
           {/* Education Section */}
@@ -57,7 +55,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLarge ? 0.3 : 0.5,
+              delay: 0.2,
               ease: "easeInOut",
             }}
           >
@@ -89,7 +87,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLarge ? 0.7 : 0.9,
+              delay: isLarge ? 0.7 : 0.3,
               ease: "easeInOut",
             }}
           >
@@ -135,7 +133,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLarge ? 1 : 1.2,
+              delay: isLarge ? 0.7 : 0.4,
               ease: "easeInOut",
             }}
           >
@@ -170,7 +168,7 @@ const Resume: React.FC = () => {
             }}
             transition={{
               duration: 1,
-              delay: isLarge ? 1.4 : 2,
+              delay: isLarge ? 0.4 : 0.5,
               ease: "easeInOut",
             }}
           >
@@ -202,7 +200,7 @@ const Resume: React.FC = () => {
                         type: "spring",
                         stiffness: 50,
                         damping: 10,
-                        delay: isLarge ? 1 : 0.5,
+                        delay: isLarge ? 0.7 : 0.3,
                         ease: "easeInOut",
                       }}
                       className="bg-[#395376] h-full rounded-full"

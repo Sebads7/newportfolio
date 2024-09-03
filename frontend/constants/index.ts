@@ -25,6 +25,15 @@ export const PROJECTS_DATA = [
     repoLink: "https://github.com/Sebads7/construction-site",
   },
   {
+    title: "Frontend-Mentor-Ecommerce Product Page",
+    description:
+      "A responsive e-commerce product page where users can view product details, add items to the cart, and manage their cart. Built with Next.js, Tailwind CSS, and MongoDB for dynamic interactions and backend integration.",
+    technologies: ["NEXT.JS", "TAILWIND", "TYPESCRIPT", "NODE.JS", "MONGODB"],
+    imageUrl: "/images/ecommerce-challenge.png",
+    liveLink: "https://ecommerce-challenge-full.vercel.app/",
+    repoLink: "https://github.com/Sebads7/ecommerce-challenge",
+  },
+  {
     title: "Frontend-Mentor-Crowd-Funding main page",
     description:
       "As one of my first projects, I built a responsive crowdfunding product page where users can make pledges, track progress bar, and see the number of backers increase. The page includes a bookmark toggle, hover states for interactivity, and optimal layouts across devices.",
