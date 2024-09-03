@@ -28,7 +28,7 @@ export const PROJECTS_DATA = [
     title: "Frontend-Mentor-Ecommerce Product Page",
     description:
       "A responsive e-commerce product page where users can view product details, add items to the cart, and manage their cart. Built with Next.js, Tailwind CSS, and MongoDB for dynamic interactions and backend integration.",
-    technologies: ["NEXT.JS", "TAILWIND", "TYPESCRIPT", "NODE.JS", "MONGODB"],
+    technologies: ["Next.JS", "Tailwind", "TypeScript", "Node.JS", "MongoDB"],
     imageUrl: "/images/ecommerce-challenge.png",
     liveLink: "https://ecommerce-challenge-full.vercel.app/",
     repoLink: "https://github.com/Sebads7/ecommerce-challenge",
