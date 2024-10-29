@@ -29,7 +29,7 @@ export const PROJECTS_DATA = [
     description:
       "A responsive e-commerce product page where users can view product details, add items to the cart, and manage their cart. Built with Next.js, Tailwind CSS, and MongoDB for dynamic interactions and backend integration.",
     technologies: ["Next.JS", "Tailwind", "TypeScript", "Node.JS", "MongoDB"],
-    imageUrl: "/images/ecommerce-challenge.png",
+    imageUrl: "/images/ecommerce-challenge.gif",
     liveLink: "https://ecommerce-challenge-full.vercel.app/",
     repoLink: "https://github.com/Sebads7/ecommerce-challenge",
   },
@@ -44,9 +44,19 @@ export const PROJECTS_DATA = [
       "Tailwind CSS",
       "Framer-Motion",
     ],
-    imageUrl: "/images/isurella.png",
+    imageUrl: "/images/isurella.gif",
     liveLink: "https://challenge-insurezella.vercel.app/",
     repoLink: "https://github.com/Sebads7/Challenge-Insurezella",
+  },
+
+  {
+    title: "Simple Calculator ",
+    description:
+      "Challenge features responsive design: fully responsive for mobile, tablet, and desktop screens. This web application was built using basic   HTML, CSS, and JavaScript to calculate simple arithmetic operations.",
+    technologies: ["HTML", "SASS", "JAVASCRIPT"],
+    imageUrl: "/images/calc-theme-1.gif",
+    liveLink: "https://calculator-challenge-24.vercel.app/",
+    repoLink: "https://github.com/Sebads7/calculator-app",
   },
   {
     title: "Password Strength Checker Challenge",
