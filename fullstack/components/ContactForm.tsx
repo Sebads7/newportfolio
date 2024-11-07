@@ -18,8 +18,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 
-// const apiBaseUrl = process.env.REACT_APP_API_URL;
-
 const ContactForm = () => {
   //states declarations
   const [submitting, setSubmitting] = useState(false);
@@ -59,51 +57,6 @@ const ContactForm = () => {
       textarea: "",
     },
   });
-
-  // Define a submit handler.
-  // const onSubmit = async (value: z.infer<typeof formSchema>) => {
-  //   // console.log(value);
-  //   console.log(form.getValues());
-  //   // Send the data.
-  //   setSubmitting(true);
-  //   setSubmitError("");
-
-  //   const isValid = await form.trigger();
-
-  //   console.log(isValid);
-
-  //   if (!isValid) {
-  //     // console.log(form.formState.errors);
-  //     setSubmitting(false);
-  //     // setSubmitError("Please fill out all required fields.");
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await fetch(
-  //       "https://construction-site-1qd6.onrender.com/send-email",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(value),
-  //       },
-  //     );
-  //     if (response.ok) {
-  //       console.log("Email sent successfully");
-  //       form.reset();
-  //       setSubmitting(false);
-  //     } else {
-  //       throw new Error("Server is not responding");
-  //     }
-  //   } catch (error) {
-  //     setSubmitting(false);
-  //     setSubmitError("Error sending email");
-  //     // console.log(form.getValues());
-  //     // console.log(error);
-  //   }
-  // };
 
   const onSubmit = async (value: z.infer<typeof formSchema>) => {
     console.log("Form Values:", value);
@@ -173,7 +126,7 @@ const ContactForm = () => {
                 <FormItem>
                   <FormControl>
                     <Input
-                      type="number"
+                      type="tel"
                       placeholder="Phone Number"
                       className="mobile:text-xs"
                       {...field}

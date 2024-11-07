@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
 import { skills } from "@/constants";
 import { motion } from "framer-motion";
 
@@ -13,6 +12,7 @@ import {
   FaNodeJs,
   FaDatabase,
   FaJava,
+  FaFigma,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -21,6 +21,7 @@ import {
   SiExpress,
   SiPython,
 } from "react-icons/si";
+import { RiNextjsFill } from "react-icons/ri";
 import useInViewAnimation from "@/components/hooks/useInView";
 import useScreenSizes from "@/components/hooks/useScreenSizes";
 
@@ -32,6 +33,7 @@ const iconMap: { [key: string]: React.ElementType } = {
   git: FaGitAlt,
   javascript: FaJsSquare,
   react: FaReact,
+  nextjs: RiNextjsFill,
   typescript: SiTypescript,
   "node.js": FaNodeJs,
   mongodb: SiMongodb,
@@ -39,6 +41,7 @@ const iconMap: { [key: string]: React.ElementType } = {
   sql: FaDatabase,
   python: SiPython,
   java: FaJava,
+  figma: FaFigma,
 };
 
 const Skills = () => {
@@ -61,7 +64,7 @@ const Skills = () => {
         <h3 className=" skills-sub-title">Technologies</h3>
       </div>
       <motion.div
-        className=" flex justify-center items-center py-10 w-full lg:px-12 "
+        className=" flex justify-center items-center py-10 w-full px-5 md:px-12 "
         initial={{ transform: "translateX(3-px) translateY(-3px)" }}
         animate={{ transform: "translateX(-3px) translateY(3px)" }}
         transition={{
@@ -73,7 +76,7 @@ const Skills = () => {
       >
         <motion.div
           ref={ref}
-          className="custom-border-radius xs:w-full  lg:w-4/5  md:rounded-tl-[10rem]  md:rounded-b[10rem] "
+          className="custom-border-radius w-full max-w-lg md:max-w-3xl  xl:max-w-7xl  md:rounded-tl-[10rem]  md:rounded-b[10rem] "
           animate={mainControls}
           initial="hidden"
           variants={{
@@ -113,11 +116,11 @@ const Skills = () => {
           }}
         >
           <motion.div
-            className="flex justify-center  items-center  w-full bg-gray-100    border-2  border-spacing-2  border-white    py-5  xs:rounded-tl-[5rem]  xs:rounded-br-[5rem]   md:rounded-tl-[10rem]  md:rounded-br-[10rem]
+            className="flex justify-center  items-center  w-full bg-gray-100    border-2  border-spacing-2  border-white    py-5  rounded-tl-[2rem]  rounded-br-[2rem]   xl:rounded-tl-[10rem]  xl:rounded-br-[10rem]
           shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] "
           >
             <motion.div className="  grid xs:grid-cols-3  sm:grid-cols-4  md:grid-cols-5 lg:gap-x-10 sm:px-6 xs:gap-x-4  ">
-              {skills.map((skill, index) => {
+              {skills.map((skill) => {
                 const IconComponent = iconMap[skill.icon];
 
                 const strokeDasharray = 251.2; // Circumference of the circle (2 * Math.PI * r)
@@ -126,11 +129,11 @@ const Skills = () => {
                   strokeDasharray - (strokeDasharray * skill.percentage) / 100; // Calculate based on percentage
 
                 return (
-                  <motion.div key={skill.skillName} className="  ">
+                  <motion.div key={skill.skillName}>
                     <motion.div className="flex flex-col justify-center items-center xs:pt-2 lg:pt-5">
                       {/* BACKGROUND  CIRCLE */}
                       <motion.svg
-                        className="xs:w-[4.5rem] xs:h-[4.5rem] sm:w-[5rem] sm:h-[5rem]  md:w-20 md:h-20 lg:w-28 lg:h-28   "
+                        className="w-[3.5rem] h-[3.5rem] sm:w-[5rem] sm:h-[5rem]  md:w-20 md:h-20 lg:w-24 lg:h-24   "
                         viewBox="0 0 100 100"
                       >
                         <circle

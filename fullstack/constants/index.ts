@@ -59,6 +59,23 @@ export const PROJECTS_DATA = [
     repoLink: "https://github.com/Sebads7/calculator-app",
   },
   {
+    title: "Full Dynamic Web Site for a home remodeling company",
+    description:
+      "This project was built with Next.js, React, Tailwind CSS, Framer-Motion, and MongoDB for dynamic interactions and backend integration.",
+    technologies: [
+      "Next.JS",
+      "React",
+      "Tailwind",
+      "Framer-Motion",
+      "TypeScript",
+      "Node.JS",
+      "MongoDB",
+    ],
+    imageUrl: "/images/dsdsatlanta.gif",
+    liveLink: "https://dsdsatlanta.vercel.app/",
+    repoLink: "https://github.com/Sebads7/dsds-remodeling",
+  },
+  {
     title: "Password Strength Checker Challenge",
     description:
       "Simple password strength checker. The password strength checker is built with React  to ensure smooth user experience.",
@@ -124,21 +141,23 @@ export const skills = [
     skillName: "JavaScript",
     percentage: 80,
     icon: "javascript",
-    color: "#F6FB7A",
+    color: "#F3C623",
   }, // JavaScript color
   { skillName: "React", percentage: 80, icon: "react", color: "#61DAFB" }, // React color
+  { skillName: "Next.js", percentage: 80, icon: "nextjs", color: "#1A1A1D" }, // React color
   {
     skillName: "TypeScript",
     percentage: 80,
     icon: "typescript",
     color: "#3178C6",
-  }, // TypeScript color
+  },
   { skillName: "Node.js", percentage: 80, icon: "node.js", color: "#339933" }, // Node.js color
   { skillName: "MongoDB", percentage: 70, icon: "mongodb", color: "#47A248" }, // MongoDB color
   { skillName: "Express", percentage: 70, icon: "express", color: "#808080" }, // Express color
   { skillName: "SQL", percentage: 70, icon: "sql", color: "#336791" }, // SQL color
   { skillName: "Python", percentage: 50, icon: "python", color: "#3776AB" }, // Python color
   { skillName: "Java", percentage: 50, icon: "java", color: "#007396" }, // Java color
+  { skillName: "Figma", percentage: 60, icon: "figma", color: "#007396" },
 ];
 
 export const data_resume = {

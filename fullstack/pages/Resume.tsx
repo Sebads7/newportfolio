@@ -9,7 +9,7 @@ import useScreenSizes from "@/components/hooks/useScreenSizes";
 // Define TypeScript interfaces for the data if not already defined
 
 const Resume: React.FC = () => {
-  const resumePDF = "/SebastianDS-Resume.pdf";
+  const resumePDF = "/Resume_DiSalvatore-Sebastian.pdf";
 
   const { isMobile, isLarge } = useScreenSizes();
 
@@ -204,7 +204,6 @@ const Resume: React.FC = () => {
                         ease: "easeInOut",
                       }}
                       className="bg-[#395376] h-full rounded-full"
-                      // style={{ width: `${lang.percentage}%` }}
                     ></motion.div>
                   </div>
                 </motion.div>
